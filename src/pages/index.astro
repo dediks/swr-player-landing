@@ -1,24 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import HeroArch from '../components/HeroArch.astro';
-import IntroStrip from '../components/IntroStrip.astro';
-import ModulesShowcase from '../components/ModulesShowcase.astro';
-import ServicesAndNumbers from '../components/ServicesAndNumbers.astro';
-import SoundmanStories from '../components/SoundmanStories.astro';
-import FooterCta from '../components/FooterCta.astro';
-import InteractiveModals from '../components/InteractiveModals.astro';
+import HeroSection from '../components/HeroSection.astro';
+import StorySection from '../components/StorySection.astro';
+import FeaturesSection from '../components/FeaturesSection.astro';
+import DownloadSection from '../components/DownloadSection.astro';
+import FooterMinimal from '../components/FooterMinimal.astro';
 ---
 
 <Layout>
 	<Navbar />
 	<main>
-		<HeroArch />
-		<IntroStrip />
-		<ModulesShowcase />
-		<ServicesAndNumbers />
-		<SoundmanStories />
+		<HeroSection />
+		<StorySection />
+		<FeaturesSection />
+		<DownloadSection />
 	</main>
-	<FooterCta />
-	<InteractiveModals />
+	<FooterMinimal />
 </Layout>

@@ -1,0 +1,240 @@
+---
+import ScreenshotGrid from './ScreenshotGrid.astro';
+import { HERO_COPY, HERO_SHOWCASE } from '../data/swrLanding';
+---
+
+<section id="top" class="swr-hero">
+	<div class="swr-container">
+		<div class="swr-hero-head">
+			<span class="swr-kicker">{HERO_COPY.eyebrow}</span>
+
+			<h1 class="swr-hero-title">
+				{HERO_COPY.titleLead}: {HERO_COPY.titleMain}
+			</h1>
+
+			<p class="swr-hero-desc">{HERO_COPY.description}</p>
+
+			<div class="swr-hero-actions">
+				<a href="#download" class="swr-btn swr-btn-primary">
+					<span>{HERO_COPY.primaryCta}</span>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M12 5v14" />
+						<path d="m19 12-7 7-7-7" />
+					</svg>
+				</a>
+				<a href="#cerita" class="swr-btn swr-btn-outline">
+					<span>{HERO_COPY.secondaryCta}</span>
+				</a>
+			</div>
+		</div>
+
+		<article class="swr-hero-preview" aria-label="Tampilan utama saat acara berlangsung">
+			<div class="swr-preview-top">
+				<div class="swr-preview-copy">
+					<span class="swr-preview-tag">
+						<span class="swr-live-dot" aria-hidden="true"></span>
+						<span>{HERO_SHOWCASE.badge}</span>
+					</span>
+					<h2 class="swr-preview-title">{HERO_SHOWCASE.title}</h2>
+					<p class="swr-preview-story">{HERO_SHOWCASE.story}</p>
+				</div>
+
+				<div class="swr-highlights swr-preview-highlights">
+					{
+						HERO_SHOWCASE.highlights.map((item) => (
+							<div class="swr-highlight-item">
+								<h3 class="swr-highlight-device">{item.device}</h3>
+								<p class="swr-highlight-detail">{item.detail}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="swr-preview-visual">
+				<ScreenshotGrid
+					screens={HERO_SHOWCASE.screens}
+					layout={HERO_SHOWCASE.layout}
+					eager={true}
+				/>
+			</div>
+		</article>
+	</div>
+</section>
+
+<style>
+	.swr-hero {
+		background-color: var(--swr-surface);
+		border-bottom: 1px solid var(--swr-border);
+		padding: 40px 0 48px;
+	}
+
+	.swr-hero-head {
+		max-width: 760px;
+		margin: 0 0 32px;
+		text-align: left;
+	}
+
+	.swr-hero-title {
+		font-size: clamp(1.75rem, 3.6vw, 2.65rem);
+		font-weight: 700;
+		line-height: 1.15;
+		margin: 12px 0 14px;
+		color: var(--swr-ink);
+	}
+
+	.swr-hero-desc {
+		max-width: 64ch;
+		margin: 0 0 22px;
+		font-size: clamp(0.94rem, 1.4vw, 1.02rem);
+		color: var(--swr-ink-2);
+		line-height: 1.64;
+	}
+
+	.swr-hero-actions {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.swr-hero-preview {
+		background-color: var(--swr-surface-alt);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-lg);
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.swr-preview-top {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: 20px;
+		align-items: start;
+	}
+
+	.swr-preview-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--swr-live);
+		margin-bottom: 8px;
+	}
+
+	.swr-live-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background-color: var(--swr-live);
+	}
+
+	.swr-preview-title {
+		font-size: clamp(1.12rem, 2vw, 1.38rem);
+		font-weight: 700;
+		line-height: 1.28;
+		margin: 0 0 8px;
+	}
+
+	.swr-preview-story {
+		font-size: 0.9rem;
+		color: var(--swr-ink-2);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.swr-preview-highlights :global(.swr-highlight-item) {
+		background-color: var(--swr-surface);
+	}
+
+	@media (max-width: 900px) {
+		.swr-hero {
+			padding: 28px 0 36px;
+		}
+
+		.swr-preview-top {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.swr-preview-top {
+			display: contents;
+		}
+
+		.swr-preview-copy {
+			order: 0;
+		}
+
+		.swr-preview-visual {
+			order: 1;
+		}
+
+		.swr-preview-highlights {
+			order: 2;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-hero {
+			padding: 20px 0 28px;
+		}
+
+		.swr-hero-head {
+			margin-bottom: 22px;
+		}
+
+		.swr-hero-title {
+			font-size: clamp(1.52rem, 6vw, 1.95rem);
+			line-height: 1.18;
+			margin: 10px 0;
+		}
+
+		.swr-hero-desc {
+			font-size: 0.88rem;
+			line-height: 1.56;
+			margin-bottom: 16px;
+		}
+
+		.swr-hero-actions {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 10px;
+		}
+
+		.swr-hero-actions .swr-btn {
+			width: 100%;
+			padding: 10px 12px;
+			font-size: 0.84rem;
+		}
+
+		.swr-hero-preview {
+			padding: 14px;
+			border-radius: 10px;
+			gap: 14px;
+		}
+
+		.swr-preview-title {
+			font-size: 1.06rem;
+		}
+
+		.swr-preview-story {
+			font-size: 0.86rem;
+			line-height: 1.52;
+		}
+	}
+
+	@media (max-width: 340px) {
+		.swr-hero-actions {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

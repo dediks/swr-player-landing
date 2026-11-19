@@ -1,0 +1,373 @@
+---
+import { DOWNLOAD_SECTION } from '../data/swrLanding';
+
+const isSafeHttpsUrl = (value: string) => value.trim().startsWith('https://');
+---
+
+<section id="download" class="swr-download">
+	<div class="swr-container">
+		<div class="swr-section-head">
+			<span class="swr-kicker">{DOWNLOAD_SECTION.eyebrow}</span>
+			<h2 class="swr-section-title">{DOWNLOAD_SECTION.heading}</h2>
+			<p class="swr-section-sub">{DOWNLOAD_SECTION.subheading}</p>
+
+			<ul class="swr-promises" aria-label="Komitmen gratis dan dedikasi">
+				{
+					DOWNLOAD_SECTION.promises.map((item) => (
+						<li class="swr-promise-item">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<polyline points="20 6 9 17 4 12" />
+							</svg>
+							<span>{item}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="swr-dl-grid">
+			{
+				DOWNLOAD_SECTION.platforms.map((card) => {
+					const statusId = `swr-dl-status-${card.id}`;
+					const primaryReady = isSafeHttpsUrl(card.primary.url);
+					const secondaryReady = card.secondary ? isSafeHttpsUrl(card.secondary.url) : false;
+
+					return (
+						<article class="swr-dl-card">
+							<div class="swr-dl-top">
+								<div class="swr-dl-platform-row">
+									<span class="swr-dl-icon" aria-hidden="true">
+										{card.id === 'windows' ? (
+											<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+												<line x1="8" y1="21" x2="16" y2="21" />
+												<line x1="12" y1="17" x2="12" y2="21" />
+											</svg>
+										) : (
+											<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+												<line x1="12" y1="18" x2="12.01" y2="18" />
+											</svg>
+										)}
+									</span>
+									<span class="swr-dl-badge">{card.badge}</span>
+								</div>
+								<span class="swr-dl-version">{card.version}</span>
+							</div>
+
+							<h3 class="swr-dl-title">{card.title}</h3>
+							<p class="swr-dl-desc">{card.description}</p>
+
+							<ul class="swr-dl-specs">
+								{card.specs.map((spec) => <li>{spec}</li>)}
+							</ul>
+
+							{
+								card.sizeGuide && card.sizeGuide.length > 0 && (
+									<div class="swr-size-guide">
+										{card.sizeGuideTitle && (
+											<div class="swr-size-guide-title">{card.sizeGuideTitle}</div>
+										)}
+										<ul class="swr-size-guide-list">
+											{card.sizeGuide.map((item) => (
+												<li>
+													<strong>{item.label}:</strong> {item.detail}
+												</li>
+											))}
+										</ul>
+									</div>
+								)
+							}
+
+							<div class="swr-dl-actions">
+								{
+									primaryReady ? (
+										<a href={card.primary.url} class="swr-btn swr-btn-primary swr-dl-btn" download>
+											<span>{card.primary.label}</span>
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+												<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+												<polyline points="7 10 12 15 17 10" />
+												<line x1="12" y1="15" x2="12" y2="3" />
+											</svg>
+										</a>
+									) : (
+										<button
+											type="button"
+											class="swr-btn swr-btn-primary swr-dl-btn"
+											data-pending-file={card.primary.fileName}
+											data-status-target={statusId}
+										>
+											<span>{card.primary.label}</span>
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+												<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+												<polyline points="7 10 12 15 17 10" />
+												<line x1="12" y1="15" x2="12" y2="3" />
+											</svg>
+										</button>
+									)
+								}
+
+								{
+									card.secondary &&
+										(secondaryReady ? (
+											<a href={card.secondary.url} class="swr-btn swr-btn-outline swr-dl-btn" download>
+												<span>{card.secondary.label}</span>
+											</a>
+										) : (
+											<button
+												type="button"
+												class="swr-btn swr-btn-outline swr-dl-btn"
+												data-pending-file={card.secondary.fileName}
+												data-status-target={statusId}
+											>
+												<span>{card.secondary.label}</span>
+											</button>
+										))
+								}
+							</div>
+
+							<div class="swr-dl-filename">
+								File: <code>{card.primary.fileName}</code>
+								{card.secondary && (
+									<>
+										{' / '}
+										<code>{card.secondary.fileName}</code>
+									</>
+								)}
+							</div>
+
+							<div id={statusId} class="swr-dl-status" hidden role="status" aria-live="polite"></div>
+						</article>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.swr-download {
+		background-color: var(--swr-canvas);
+		padding: 52px 0 64px;
+	}
+
+	.swr-promises {
+		list-style: none;
+		padding: 0;
+		margin: 14px 0 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		gap: 8px 18px;
+	}
+
+	.swr-promise-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-family: var(--font-ui);
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--swr-ink);
+	}
+
+	.swr-promise-item svg {
+		color: var(--swr-live);
+		flex-shrink: 0;
+	}
+
+	.swr-dl-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+		align-items: stretch;
+	}
+
+	.swr-dl-card {
+		background-color: var(--swr-surface);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-lg);
+		padding: 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.swr-dl-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.swr-dl-platform-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.swr-dl-icon {
+		width: 40px;
+		height: 40px;
+		border-radius: var(--swr-radius-md);
+		background-color: var(--swr-surface-alt);
+		border: 1px solid var(--swr-border);
+		color: var(--swr-ink);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.swr-dl-badge {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-dl-version {
+		font-family: var(--font-mono);
+		font-size: 0.74rem;
+		font-weight: 700;
+		color: var(--swr-ink);
+		background-color: var(--swr-surface-alt);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-sm);
+		padding: 4px 10px;
+	}
+
+	.swr-dl-title {
+		font-size: 1.38rem;
+		font-weight: 700;
+		margin: 0;
+	}
+
+	.swr-dl-desc {
+		font-size: 0.92rem;
+		color: var(--swr-ink-2);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.swr-dl-specs {
+		margin: 0 0 4px;
+		padding-left: 18px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		font-size: 0.86rem;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-size-guide {
+		background-color: var(--swr-surface-alt);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-md);
+		padding: 13px 15px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.swr-size-guide-title {
+		font-family: var(--font-ui);
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--swr-ink);
+	}
+
+	.swr-size-guide-list {
+		margin: 0;
+		padding-left: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+		font-size: 0.82rem;
+		line-height: 1.54;
+		color: var(--swr-ink-2);
+	}
+
+	.swr-size-guide-list strong {
+		font-family: var(--font-ui);
+		font-weight: 600;
+		color: var(--swr-ink);
+	}
+
+	.swr-dl-actions {
+		margin-top: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-top: 6px;
+	}
+
+	.swr-dl-btn {
+		width: 100%;
+	}
+
+	.swr-dl-filename {
+		font-size: 0.78rem;
+		color: var(--swr-ink-muted);
+		text-align: center;
+	}
+
+	.swr-dl-filename code {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: var(--swr-ink);
+	}
+
+	.swr-dl-status {
+		background-color: var(--swr-accent-soft);
+		border: 1px solid #bae6fd;
+		border-radius: var(--swr-radius-md);
+		padding: 10px 14px;
+		font-family: var(--font-ui);
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--swr-ink);
+		text-align: center;
+	}
+
+	@media (max-width: 820px) {
+		.swr-dl-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-download {
+			padding: 28px 0 40px;
+		}
+
+		.swr-promises {
+			margin-top: 12px;
+			gap: 6px 14px;
+		}
+
+		.swr-promise-item {
+			font-size: 0.78rem;
+		}
+
+		.swr-dl-grid {
+			gap: 16px;
+		}
+
+		.swr-dl-card {
+			padding: 18px 16px;
+			gap: 12px;
+			border-radius: 10px;
+		}
+
+		.swr-dl-title {
+			font-size: 1.24rem;
+		}
+
+		.swr-dl-desc,
+		.swr-dl-specs {
+			font-size: 0.85rem;
+		}
+	}
+</style>

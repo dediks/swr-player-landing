@@ -3,351 +3,495 @@ export interface NavLinkItem {
 	href: string;
 }
 
-export interface IntroHighlight {
-	id: string;
-	icon: 'shield' | 'cue' | 'fader' | 'pads' | 'remote';
-	label: string;
-}
+export type FeatureIconKey =
+	| 'download'
+	| 'fade'
+	| 'wifi'
+	| 'eq31'
+	| 'pad'
+	| 'skin'
+	| 'safemode'
+	| 'rta'
+	| 'organizer';
 
-export interface ModuleItem {
-	id: 'android-deck' | 'android-stage' | 'win-audiolab' | 'win-player';
-	numberLabel: string;
-	category: string;
-	platformBadge: string;
-	title: string;
-	subtitle: string;
-	accentTone: 'mint' | 'cyan' | 'gold' | 'navy';
-	summary: string;
-	highlights: string[];
-	stageTip: string;
-}
-
-export interface FohServiceItem {
+export interface FeatureItem {
 	id: string;
-	icon: 'safe' | 'guard' | 'monosum' | 'duck' | 'phase' | 'skin';
-	tone: 'cyan' | 'mint' | 'gold';
-	platformTag: string;
+	icon: FeatureIconKey;
 	title: string;
 	description: string;
 }
 
-export interface NumberStatItem {
-	value: string;
+export interface ShowcasePaneImage {
 	label: string;
-	sublabel: string;
-	tone: 'soft-cyan' | 'electric-cyan' | 'soft-mint' | 'soft-gold';
+	src: string;
+	alt: string;
+	width: number;
+	height: number;
+	kind: 'desktop' | 'android';
 }
 
-export interface SoundmanStory {
-	quote: string;
-	name: string;
-	role: string;
+export interface ScreenHighlight {
+	device: string;
+	detail: string;
+}
+
+export interface HeroShowcaseData {
 	badge: string;
-	tone: 'mint' | 'cyan' | 'gold';
+	title: string;
+	story: string;
+	highlights: ScreenHighlight[];
+	layout: 'desktop-android';
+	screens: ShowcasePaneImage[];
 }
 
-export interface DownloadPackage {
-	id: 'arm64' | 'armv7' | 'win-setup';
-	platform: 'android' | 'windows';
-	archLabel: string;
+export interface StoryChapterItem {
+	id: string;
+	step: string;
+	shortLabel: string;
+	phase: string;
 	title: string;
-	recommended: boolean;
-	approxSize: string;
-	compatibility: string;
-	downloadUrl: string;
+	problem: string;
+	solution: string;
+	highlights: ScreenHighlight[];
+	layout: 'desktop-android' | 'trio';
+	screens: ShowcasePaneImage[];
+}
+
+export interface DownloadTarget {
+	label: string;
 	fileName: string;
+	/** Isi dengan URL rilis HTTPS (mis. GitHub Releases atau Cloudflare R2) saat installer siap diunduh. */
+	url: string;
+}
+
+export interface SizeGuideItem {
+	label: string;
+	detail: string;
+}
+
+export interface PlatformDownloadCard {
+	id: 'windows' | 'android';
+	badge: string;
+	title: string;
+	version: string;
+	description: string;
+	primary: DownloadTarget;
+	secondary?: DownloadTarget;
+	specs: string[];
+	sizeGuideTitle?: string;
+	sizeGuide?: SizeGuideItem[];
 }
 
 export const SITE_META = {
-	title: 'SWR Player by Swararia — Pemutar Musik untuk Soundman & Tukang Sound',
+	title: 'SWR Player — MP3 Player Gratis dari Tukang Sound untuk Tukang Sound',
 	description:
-		'Pemutar musik panggung yang diracik khusus untuk soundman, tukang sound hajatan, operator mixer, dan kru rental audio—di Android dan Laptop Windows. Bebas notif WA bocor, anti kepencet, Fade Out halus, volume rata, dan remote Wi-Fi tanpa kuota.',
+		'100% Gratis sebagai dedikasi untuk sesama tukang sound. Tersedia Desktop Windows & Android Native: download MP3 kualitas optimal YouTube & YT Music Premium, Fade In/Out adjustable, Remote & sharing Wi-Fi, 31-Band Graphic EQ, Pad Slot, Brand Skin.',
 	brandName: 'SWR PLAYER',
 	brandSub: 'BY SWARARIA',
-	versionLabel: 'ANDROID & WINDOWS · 100% OFFLINE',
 };
 
 export const NAV_LINKS: NavLinkItem[] = [
-	{ label: 'TENTANG', href: '#kenalan' },
-	{ label: 'ANDROID & PC', href: '#modul' },
-	{ label: 'FITUR', href: '#fitur-foh' },
-	{ label: 'RINGKASAN', href: '#angka' },
-	{ label: 'KATA SOUNDMAN', href: '#cerita' },
+	{ label: 'Alur Kerja', href: '#cerita' },
+	{ label: 'Fitur', href: '#fitur' },
 ];
 
 export const HERO_COPY = {
-	line1: 'DIBIKIN OLEH & UNTUK',
-	line2: 'TUKANG SOUND',
-	line3: 'PAS JAGA',
-	scriptAccent: 'Mixer.',
+	eyebrow: '100% GRATIS · DEDIKASI TUKANG SOUND',
+	titleLead: 'SWR Player',
+	titleMain: 'MP3 Player yang Dibuat oleh Tukang Sound untuk Tukang Sound.',
 	description:
-		'Lahir dari pengalaman jaga mixer berjam-jam di lapangan. Dibuat buat soundman panggung, tukang sound hajatan, operator FOH, sampai kru rental: bebas bunyi WA bocor ke speaker, anti kepencet pas momen sakral, volume lagu rata, dan Fade Out halus.',
-	primaryCta: 'DOWNLOAD SEKARANG',
-	secondaryCta: 'LIHAT CARA KERJANYA',
-	floatingBadgeTop: 'ANDROID & PC',
-	floatingBadgeBottom: '100% OFFLINE',
+		'Tersedia untuk Desktop Windows dan Android Native sebagai karya dedikasi—dibagikan gratis penuh fitur tanpa langganan atau iklan. Download MP3 kualitas optimal dari YouTube & YT Music Premium, Fade In/Out adjustable, 31-Band Graphic EQ, Pad Slot, Brand Skin, hingga remote & sharing track Wi-Fi.',
+	primaryCta: 'Download Gratis',
+	secondaryCta: 'Lihat Alur Kerja',
 };
 
-export const INTRO_COPY = {
-	eyebrow: 'DARI MEJA OPERATOR KE LAPANGAN.',
-	headline: 'PAHAM BETUL RASANYA JAGA SOUND.',
-	paragraph:
-		'Pemutar musik biasa dibuat cuma buat dengerin lagu santai, bukan buat kerja keras di lapangan. SWR Player kami racik sendiri dari meja mixer—buat sesama soundman, tukang sound, dan operator audio biar pas ngawal acara suasananya aman, rapi, dan nggak bikin jantungan.',
-	signature: 'Karya Tukang Sound buat Rekan Lapangan 🎛️',
-	deviceStatusLabel: 'HP di Meja Mixer · Laptop Persiapan',
-	deviceStatusBadge: 'Siap Tempur',
-	deviceSecondaryBadge: 'WA Bisu · Anti Kepencet · Fade Out 3–5d',
+export const HERO_SHOWCASE: HeroShowcaseData = {
+	badge: 'PEMBUKA · TAMPILAN UTAMA SAAT ON AIR',
+	title: 'Layar Utama Fokus ke Sisa Waktu, Transisi Halus & Keamanan Panggung',
+	story:
+		'Saat acara berjalan, operator tidak sempat membaca menu kecil yang bertumpuk. Karena itu angka hitung mundur dibuat besar agar terbaca sekilas, lengkap dengan Fade Out 1 klik (tekan 2x untuk putus instan), Safe Mode anti-notifikasi WA, dan pengunci layar anti-salah colek.',
 	highlights: [
-		{ id: 'safe', icon: 'shield', label: 'Bunyi notif WA & telepon tidak bocor ke speaker panggung (Android)' },
-		{ id: 'cue', icon: 'cue', label: 'Lagu main terkunci aman—nggak bakal kepotong kalau salah colek' },
-		{ id: 'fader', icon: 'fader', label: 'Fade Out halus 3–5 detik (tekan 2x langsung mati) & Ducking pas MC bicara' },
-		{ id: 'pads', icon: 'pads', label: 'Ketahuan MP3 palsu mendem & volume semua lagu diratakan (Windows)' },
-		{ id: 'remote', icon: 'remote', label: 'Kontrol player & kirim lagu antar-HP atau laptop via Wi-Fi tanpa kuota' },
-	] satisfies IntroHighlight[],
+		{
+			device: 'Laptop Windows · FOH Live Player',
+			detail: 'Menampilkan status ON AIR, timer hitung mundur besar, spektrum RTA langsung, tombol Fade 3s/5s, Auto-Stop 1 lagu, dan 8 Instant Cue Pads.',
+		},
+		{
+			device: 'HP Android · Live Deck + Guard',
+			detail: 'Membisukan notifikasi WA/telepon otomatis saat tampil (Auto DND), mengunci track aktif agar aman dari salah sentuh, dan menyediakan bank 8 Pad cepat.',
+		},
+	],
+	layout: 'desktop-android',
+	screens: [
+		{
+			label: 'Desktop Windows · FOH Live Player (ON AIR)',
+			src: '/images/desktop-play.png',
+			alt: 'Tampilan live Desktop Windows saat memutar lagu dengan RTA aktif, hitung mundur besar, dan Cue Pad terisi',
+			width: 1520,
+			height: 900,
+			kind: 'desktop',
+		},
+		{
+			label: 'Android Native · Live Deck (Guard Aktif)',
+			src: '/images/android-play.png',
+			alt: 'Tampilan live Android Native Live Deck saat memutar lagu dengan meter sinyal, Guard aktif, dan Fade Out 3s',
+			width: 1080,
+			height: 2340,
+			kind: 'android',
+		},
+	],
 };
 
-export const MODULES_SHOWCASE = {
-	heading: 'SENJATA LENGKAP DI HP & LAPTOP',
-	ctaLabel: 'UNDUH SEKARANG',
+export const STORY_SECTION = {
+	eyebrow: 'DESIGN STORY · DEDIKASI DI LAPANGAN',
+	heading: 'Dari Persiapan Lagu Sampai Acara Selesai, Tanpa Pindah Aplikasi',
+	subheading:
+		'Lahir dari dedikasi membantu sesama pekerja sound agar kerja di panggung lebih tenang—setiap layar dirancang berurutan menjawab kebutuhan nyata tanpa biaya langganan.',
+	chapters: [
+		{
+			id: 'tahap-01',
+			step: '01',
+			shortLabel: 'Cari & Unduh',
+			phase: 'TAHAP 01 · PERSIAPAN MATERI',
+			title: 'Cari Lagu & Download MP3 Langsung dari Aplikasi',
+			problem: 'Masalah di lapangan: menyalin tautan lewat situs konverter sering penuh iklan dan kualitas audionya turun.',
+			solution:
+				'Keputusan desain: kolom pencarian YouTube & YouTube Music ditanam langsung di halaman awal. Tinggal cari judul lalu unduh dengan kualitas optimal—terlebih saat terhubung akun YouTube Music Premium.',
+			highlights: [
+				{
+					device: 'Di Laptop Windows (Ingest Audio)',
+					detail: 'Menandai sumber terbaik dengan label YT PREMIUM MAX, mendukung unduhan daftar lagu sekaligus dalam antrean.',
+				},
+				{
+					device: 'Di HP Android (Tambah Lagu)',
+					detail: 'Request mendadak dari MC atau panitia bisa langsung dicari dan diunduh di HP dalam hitungan detik.',
+				},
+			],
+			layout: 'desktop-android',
+			screens: [
+				{
+					label: 'Desktop Windows · Ingest YT Music Premium',
+					src: '/images/desktop-search.png',
+					alt: 'Pencarian lagu YouTube Music di Desktop Windows menampilkan kualitas YT Premium Max dan antrean unduhan',
+					width: 1520,
+					height: 900,
+					kind: 'desktop',
+				},
+				{
+					label: 'Android Native · Cari & Unduh Langsung',
+					src: '/images/android-search.png',
+					alt: 'Hasil pencarian YouTube Music di Android Native lengkap dengan bitrate dan tombol unduh langsung',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+			],
+		},
+		{
+			id: 'tahap-02',
+			step: '02',
+			shortLabel: 'Cek Polaritas',
+			phase: 'TAHAP 02 · CEK SOUND & KABEL',
+			title: 'Pastikan Polaritas Speaker (+/-) & Jalur Output Sesuai',
+			problem: 'Masalah di lapangan: kabel speaker terbalik membuat hentakan bass saling meniadakan dan suara terdengar tipis.',
+			solution:
+				'Keputusan desain: fitur Phase Checker ditaruh di HP agar tukang sound bisa langsung mengetes di depan boks speaker, sementara Desktop menyediakan tombol routing cepat Stereo, Mono Sum L+R, dan Phase 180°.',
+			highlights: [
+				{
+					device: 'Di Laptop Windows (Phase & Matrix)',
+					detail: 'Sakelar langsung untuk ubah Stereo ke Mono Sum L+R, Solo L/R untuk cek jalur kabel, serta balik fasa 180°.',
+				},
+				{
+					device: 'Di HP Android (Speaker Phase Checker)',
+					detail: 'Membaca polaritas positif (+) atau terbalik (-) menggunakan sinyal pulsa lewat mikrofon HP (mode 1 HP atau 2 HP).',
+				},
+			],
+			layout: 'desktop-android',
+			screens: [
+				{
+					label: 'Desktop Windows · Phase & Matrix Routing',
+					src: '/images/desktop-phase.png',
+					alt: 'Kontrol Stereo, Mono Sum L+R, Solo L/R, dan Phase 180 derajat di Desktop Windows',
+					width: 1520,
+					height: 900,
+					kind: 'desktop',
+				},
+				{
+					label: 'Android Native · Speaker Phase Checker',
+					src: '/images/android-phase.png',
+					alt: 'Alat cek fasa polaritas speaker pada aplikasi Android Native',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+			],
+		},
+		{
+			id: 'tahap-03',
+			step: '03',
+			shortLabel: 'EQ & Pad Slot',
+			phase: 'TAHAP 03 · TUNING & JINGLE',
+			title: 'Rapikan Suara dengan 31-Band EQ & Siapkan Pad Slot Jingle',
+			problem: 'Masalah di lapangan: karakter gedung/tenda berbeda-beda, dan jeda MC sering butuh jingle atau efek suara cepat.',
+			solution:
+				'Keputusan desain: slider EQ 31-band dibuat nyaman digeser di layar sentuh Android, durasi Fade In/Out bisa diatur fleksibel (0.3–5 detik), dan 8 slot Cue Pad dipisahkan di panel khusus agar tidak mengganggu musik utama.',
+			highlights: [
+				{
+					device: 'Di Laptop Windows (Fade + 8 Cue Pads)',
+					detail: 'Pengaturan Global Fade 3s/5s, 3-Band EQ cepat, serta 8 tombol Cue Pad yang bisa dipicu angka keyboard 1–8.',
+				},
+				{
+					device: 'Di HP Android (31-Band Graphic EQ)',
+					detail: 'Equalizer grafis 31 band standar ISO (20 Hz–20 kHz) lengkap dengan preset dan limiter agar output tetap bersih.',
+				},
+			],
+			layout: 'desktop-android',
+			screens: [
+				{
+					label: 'Desktop Windows · EQ, Fade 3s & 8 Cue Pads',
+					src: '/images/desktop-eq.png',
+					alt: 'Tampilan Desktop Windows dengan 3-Band EQ aktif, Global Fade 3s, dan 8 Instant Cue Pads',
+					width: 1520,
+					height: 900,
+					kind: 'desktop',
+				},
+				{
+					label: 'Android Native · 31-Band Graphic EQ',
+					src: '/images/android-eq.png',
+					alt: 'Tampilan 31-Band Graphic EQ ISO 1/3 Octave di Android Native lengkap dengan limiter',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+			],
+		},
+		{
+			id: 'tahap-04',
+			step: '04',
+			shortLabel: 'Remote Wi-Fi',
+			phase: 'TAHAP 04 · KENDALI & BAGI LAGU',
+			title: 'Kontrol Playback dari Depan Panggung & Kirim Lagu Wi-Fi',
+			problem: 'Masalah di lapangan: harus bolak-balik ke meja FOH untuk Play/Fade Out atau memindahkan file lagu lewat flashdisk.',
+			solution:
+				'Keputusan desain: alih-alih mengetik alamat IP manual yang rawan salah, pairing dibuat cukup scan QR lewat Wi-Fi lokal atau hotspot HP untuk kendali jarak jauh sekaligus berbagi track antar HP dan Laptop.',
+			highlights: [
+				{
+					device: 'Di Laptop Windows (FOH Wireless Remote)',
+					detail: 'Menghasilkan QR Code + PIN sesi otomatis yang tinggal dipindai oleh HP operator di jaringan Wi-Fi yang sama.',
+				},
+				{
+					device: 'Di HP Android (Remote Multi-Device)',
+					detail: 'Mendukung koneksi HP ke HP maupun HP ke Laptop lewat Wi-Fi lokal/hotspot, dilengkapi pairing manual bila tanpa kamera.',
+				},
+			],
+			layout: 'desktop-android',
+			screens: [
+				{
+					label: 'Desktop Windows · FOH Wireless Remote QR',
+					src: '/images/desktop-remote.png',
+					alt: 'Dialog QR Code dan PIN untuk remote playback Desktop Windows melalui Wi-Fi lokal',
+					width: 1520,
+					height: 900,
+					kind: 'desktop',
+				},
+				{
+					label: 'Android Native · Remote Multi-Device',
+					src: '/images/android-remote.png',
+					alt: 'Menu pairing QR Wi-Fi untuk remote antar-HP maupun HP ke Laptop di Android Native',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+			],
+		},
+		{
+			id: 'tahap-05',
+			step: '05',
+			shortLabel: 'Brand Skin & QC',
+			phase: 'TAHAP 05 · BRAND SKIN & QC LAB',
+			title: 'Tampil Profesional dengan Brand Skin, Stage RTA & Audit QC',
+			problem: 'Masalah di lapangan: file kiriman panitia sering pecah/clipping, sementara layar player HP terlihat standar seperti pemutar musik biasa.',
+			solution:
+				'Keputusan desain: Brand Skin memudahkan operator memasang logo rental dan tema warna ke tampilan Stage RTA layar penuh di HP; sementara Desktop menyediakan Soundsystem QC Lab, Tag Organizer, dan pemotong multitrack.',
+			highlights: [
+				{
+					device: 'Di Laptop Windows (QC & Spectral Lab)',
+					detail: 'Mengukur True Peak (dBTP), Loudness (LUFS), mendeteksi Fake MP3, merapikan tag track massal, dan memotong rekaman multitrack/video.',
+				},
+				{
+					device: 'Di HP Android (Brand Skin -> Stage RTA)',
+					detail: 'Unggah logo rental, tulis nama acara, pilih palet warna (Mint / Gold / Cobalt / Amber / Crimson), lalu tampilkan di Stage RTA real-time.',
+				},
+			],
+			layout: 'trio',
+			screens: [
+				{
+					label: 'Desktop Windows · Soundsystem QC & Spectral Lab',
+					src: '/images/desktop-qc.png',
+					alt: 'Halaman Soundsystem QC dan Spectral Lab di Desktop Windows untuk audit dBTP, LUFS, dan kualitas file audio',
+					width: 1520,
+					height: 900,
+					kind: 'desktop',
+				},
+				{
+					label: 'Android Native · Pengaturan Brand & Skin',
+					src: '/images/android-skin.png',
+					alt: 'Pengaturan Upload Logo, Nama Rental, Tag Event, dan pilihan tema warna di Android Native',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+				{
+					label: 'Android Native · Tampilan Stage RTA Berlogo',
+					src: '/images/android-rta.png',
+					alt: 'Hasil tampilan logo rental dan spektrum Stage RTA Halo aktif pada Android Native',
+					width: 1080,
+					height: 2340,
+					kind: 'android',
+				},
+			],
+		},
+	] satisfies StoryChapterItem[],
+};
+
+export const FEATURES_SECTION = {
+	eyebrow: 'RINGKASAN FITUR',
+	heading: 'Simpel di Luar, Lengkap untuk Kerja Sound',
+	subheading:
+		'Seluruh alat yang sering dibutuhkan operator panggung, rental audio, dan tukang sound hajatan — tersedia di Windows maupun Android Native.',
 	items: [
 		{
-			id: 'android-deck',
-			numberLabel: '01 · ANDROID (DI MEJA MIXER)',
-			category: 'ANDROID · PLAYER ANTI-PANIK',
-			platformBadge: 'ANDROID',
-			title: 'PUTAR LAGU TANPA PANIK',
-			subtitle: 'WA nggak tembus, anti kepencet & Fade Out halus',
-			accentTone: 'mint',
-			summary:
-				'Jadikan HP Android pemutar panggung yang tenang dicolok ke mixer. Bunyi notif WA sama telepon nggak bakal bocor bikin kaget tamu, lagu yang lagi main nggak bakal mati kepencet jari, dan bisa berhenti pelan-pelan.',
-			highlights: [
-				'Bisukan notifikasi & panggilan otomatis (Auto DND / Separate App Sound)',
-				'Berhenti otomatis setelah 1 lagu selesai + hitungan mundur 15 detik jelang habis',
-				'Lagu utama terkunci aman: tersenggol atau salah colek judul lain tidak langsung memotong',
-				'Fade Out halus (0.3–5 detik) & Fade In otomatis; tekan ke-2 kali langsung putus darurat',
-				'16 tombol pad jingle/efek suara instan + tombol kecilkan musik 1 klik pas MC bicara (-12 dB)',
-				'Deteksi otomatis colokan kabel mixer vs Bluetooth + peringatan bila volume HP belum mentok',
-			],
-			stageTip: 'Catatan Lapangan: Begitu kabel mixer dicolok, pastikan indikator hijau "Siap Putar" menyala dan volume media HP sudah penuh sebelum tamu datang.',
+			id: 'yt-download',
+			icon: 'download',
+			title: 'Download MP3 Langsung dari Aplikasi',
+			description:
+				'Cari lagu atau playlist lalu unduh langsung dari dalam aplikasi dengan kualitas paling optimal dari YouTube & YouTube Music — terlebih saat terhubung akun YouTube Music Premium.',
 		},
 		{
-			id: 'android-stage',
-			numberLabel: '02 · ANDROID (ALAT OPERATOR & RENTAL)',
-			category: 'ANDROID · TAMPILAN & KONEKSI',
-			platformBadge: 'ANDROID',
-			title: 'STAGE RTA, FASA & SERVER WI-FI',
-			subtitle: 'Pasang logo rental, cek speaker & remote multi-HP',
-			accentTone: 'cyan',
-			summary:
-				'Biar meja operator makin ganteng dengan layar grafik musik berlogo rental Anda sendiri. Lengkap dengan alat cek arah kabel speaker (+/-) biar bass padat, plus mode server untuk kontrol atau kirim lagu lewat Wi-Fi.',
-			highlights: [
-				'Layar spektrum musik real-time (gaya Halo, LED Bar, Curve) + 5 pilihan tema warna panggung',
-				'Pasang Nama Rental, Nama Hajatan/Acara & Logo kru sendiri langsung dari galeri HP',
-				'Cek arah fasa speaker (+/-) pakai 1 HP atau 2 HP (satu di mixer, satu keliling box speaker) + simpan file WAV tes',
-				'Cari lagu & dengar cuplikan sampai 2 menit sebelum disimpan ke playlist HP',
-				'HP jadi Server Wi-Fi lokal: dikontrol HP kru lain (Scan QR) atau laptop panitia (PIN) + kirim file bebas dobel',
-			],
-			stageTip: 'Catatan Lapangan: Cek arah fasa sub dan top pas gladi bersih biar suara bass padat bulat di tengah tenda dan nggak saling telan.',
+			id: 'fade-in-out',
+			icon: 'fade',
+			title: 'Fade In & Fade Out Adjustable',
+			description:
+				'Atur parameter durasi Fade In dan Fade Out (0.3–5 detik) agar transisi musik masuk dan berhenti tetap smooth. Tekan kedua kali saat fading untuk putus instan darurat.',
 		},
 		{
-			id: 'win-audiolab',
-			numberLabel: '03 · WINDOWS (PERSIAPAN DI LAPTOP)',
-			category: 'WINDOWS · SIAPKAN AMUNISI',
-			platformBadge: 'WINDOWS',
-			title: 'BUANG MP3 MENDEM & RATAKAN VOLUME',
-			subtitle: 'Pisahkan file abal-abal, samakan gain & potong rekaman',
-			accentTone: 'gold',
-			summary:
-				'Beresin semua amunisi lagu di laptop sebelum kru berangkat loading. File MP3 palsu hasil editan yang suaranya mendem langsung ketahuan, volume semua lagu dibikin rata biar fader mixer anteng.',
-			highlights: [
-				'Deteksi file MP3 320k tipuan (spektrum mendem) dibanding lagu yang benar-benar jernih',
-				'Samakan kekerasan suara semua lagu (EBU R128) supaya tangan operator nggak bolak-balik ngejar gain',
-				'Ubah format lagu untuk Flashdisk/CDJ (44.1 kHz) atau Mixer Digital (48 kHz), atau simpan format asli',
-				'Beri nomor urut otomatis (01 - , 02 - ) dan bersihkan tulisan berantakan di nama file secara massal',
-				'Potong rekaman multitrack WAV per lagu (mixer X32/M32/DAW) serta potong video dokumentasi per lagu',
-			],
-			stageTip: 'Catatan Lapangan: Ratakan volume playlist di rumah, jadi pas hajatan tinggal duduk santai tanpa takut ada lagu yang tiba-tiba meledak kekerasan.',
+			id: 'wifi-remote-share',
+			icon: 'wifi',
+			title: 'Remote Control & Sharing Track Wi-Fi',
+			description:
+				'Kendalikan Play, Pause, Next, dan Fade Out dari HP sambil keliling cek suara depan panggung, serta kirim atau bagikan file lagu antar perangkat lewat Wi-Fi lokal.',
 		},
 		{
-			id: 'win-player',
-			numberLabel: '04 · WINDOWS + HP (PANGGUNG & LAPANGAN)',
-			category: 'WINDOWS · PLAYER & REMOTE',
-			platformBadge: 'WINDOWS + HP',
-			title: 'PLAYER LAPTOP & REMOTE DARI HP',
-			subtitle: '8 tombol cepat, atur EQ & kendalikan dari depan tenda',
-			accentTone: 'navy',
-			summary:
-				'Pemutar andalan di laptop Windows dengan tombol Fade 3s/5s, EQ 3-band, dan shortcut keyboard. Laptop tetap aman di meja sound—tukang sound bisa jalan ke depan tenda sambil kontrol Play dan Fade lewat HP.',
-			highlights: [
-				'Pilih mode berhenti otomatis per 1 lagu, lanjut terus, atau ulang + Fade In/Out (Off–5 detik)',
-				'Tombol langsung Fade 3s / 5s, shortcut keyboard (Spasi, S, F, 1–8) & tekan 2x langsung putus darurat',
-				'8 tombol cepat (angka 1–8 di keyboard) untuk memutar jingle sponsor atau lagu selingan seketika',
-				'Atur EQ (Low, Mid, High), gabung Mono (L+R), balik fasa 180°, dan grafik spektrum real-time',
-				'Kontrol Play, Stop, ganti lagu, dan Fade Out dari HP (Scan QR) lewat Wi-Fi tanpa butuh kuota internet',
-			],
-			stageTip: 'Catatan Lapangan: Laptop taruh di meja sound, bawa HP jalan ke tengah audiens buat tes dengar suara panggung secara riil.',
+			id: 'graphic-eq-31',
+			icon: 'eq31',
+			title: '31-Band Graphic EQ',
+			description:
+				'Equalizer grafis 31 band presisi (20 Hz – 20 kHz) di aplikasi Android untuk merapikan karakter suara sesuai karakter speaker dan ruangan, lengkap dengan preset serta limiter.',
 		},
-	] satisfies ModuleItem[],
+		{
+			id: 'pad-slot',
+			icon: 'pad',
+			title: 'Pad Slot Instan',
+			description:
+				'Siapkan slot pad untuk jingle sponsor, bumper acara, tepuk tangan, atau efek suara sekali sentuh — mendukung bank pad di Android dan tombol cepat angka 1–8 di Windows.',
+		},
+		{
+			id: 'brand-skin',
+			icon: 'skin',
+			title: 'Brand Skin Custom',
+			description:
+				'Pasang logo rental sendiri, nama acara, dan pilihan warna tampilan di layar Stage RTA maupun aplikasi Android supaya meja operator terlihat makin rapi dan profesional.',
+		},
+		{
+			id: 'safe-mode',
+			icon: 'safemode',
+			title: 'Safe Mode & Anti-Kepencet',
+			description:
+				'Bisukan notifikasi WA & telepon otomatis saat tampil (Auto DND di Android), kunci lagu yang sedang berputar agar aman dari salah colek, serta berhenti otomatis per 1 lagu.',
+		},
+		{
+			id: 'stage-rta-phase',
+			icon: 'rta',
+			title: 'Stage RTA & Cek Polaritas Speaker',
+			description:
+				'Tampilan spektrum frekuensi real-time untuk memantau output suara, ditambah alat cek polaritas kabel speaker (+/-) di HP agar hentakan bass padat dan tidak saling telan.',
+		},
+		{
+			id: 'tag-multitrack',
+			icon: 'organizer',
+			title: 'Tag Organizer & Potong Multitrack',
+			description:
+				'Di Desktop Windows, rapikan nomor urut track dan bersihkan tag judul YouTube secara massal, sekaligus potong rekaman multitrack WAV atau video dokumentasi per lagu.',
+		},
+	] satisfies FeatureItem[],
 };
 
-export const FOH_SERVICES: FohServiceItem[] = [
-	{
-		id: 'safe-mode',
-		icon: 'safe',
-		tone: 'cyan',
-		platformTag: 'ANDROID',
-		title: 'Notif WA & Telepon Bisu Otomatis',
-		description: 'Bunyi "ting" WA atau panggilan masuk nggak bakal nyelonong ke sound gantung. Momen sakral aman terkendali.',
-	},
-	{
-		id: 'guard-cue',
-		icon: 'guard',
-		tone: 'mint',
-		platformTag: 'ANDROID',
-		title: 'Lagu Main Aman, Anti Kepencet',
-		description: 'Tangan operator senggolan atau salah colek judul lain? Musik yang lagi jalan tetap aman terkunci.',
-	},
-	{
-		id: 'fader-duck',
-		icon: 'duck',
-		tone: 'gold',
-		platformTag: 'ANDROID & WINDOWS',
-		title: 'Fade Out Halus, 2x Tekan Putus',
-		description: 'MC mendadak bicara? Fade Out 3–5 detik turun pelan-pelan. Kalau ada kondisi darurat, tekan 2x langsung mati.',
-	},
-	{
-		id: 'mono-sum',
-		icon: 'monosum',
-		tone: 'cyan',
-		platformTag: 'WINDOWS',
-		title: 'Babat MP3 Mendem & Samakan Volume',
-		description: 'Ketahuan mana MP3 editan abal-abal dan samakan kerasnya semua lagu biar fader mixer anteng.',
-	},
-	{
-		id: 'phase-checker',
-		icon: 'phase',
-		tone: 'mint',
-		platformTag: 'ANDROID & WINDOWS',
-		title: '16 Pad Jingle, Duck MC & Cek Fasa',
-		description: 'Tombol tepuk tangan instan, musik otomatis mengecil pas MC bicara (-12 dB), dan tes polaritas speaker (+/-).',
-	},
-	{
-		id: 'brand-studio',
-		icon: 'skin',
-		tone: 'gold',
-		platformTag: 'ANDROID ↔ WINDOWS',
-		title: 'Remote QR & Kirim Lagu Bebas Kuota',
-		description: 'Kolega rental atau panitia mau setor lagu? Kirim langsung via Wi-Fi lokal tanpa kabel data & tanpa internet.',
-	},
-];
-
-export const STATS_NUMBERS: NumberStatItem[] = [
-	{
-		value: 'HP & PC',
-		label: 'ANDROID & WINDOWS',
-		sublabel: 'Bawa HP saja beres, atau bawa Laptop buat senjata lengkap',
-		tone: 'soft-cyan',
-	},
-	{
-		value: '0.3–5s',
-		label: 'FADE IN & FADE OUT',
-		sublabel: 'Turun halus otomatis, tombol darurat tekan 2x langsung putus',
-		tone: 'electric-cyan',
-	},
-	{
-		value: '16 PAD',
-		label: 'PAD JINGLE & CEK FASA',
-		sublabel: 'Pad jingle MC, logo rental di layar & cek polaritas speaker',
-		tone: 'soft-mint',
-	},
-	{
-		value: 'OFFLINE',
-		label: '100% BEBAS KUOTA',
-		sublabel: 'Setor lagu & kendalikan player via Wi-Fi lokal tanpa internet',
-		tone: 'soft-gold',
-	},
-];
-
-export const SOUNDMAN_STORIES: SoundmanStory[] = [
-	{
-		quote:
-			'Paling tenang pas sesi ijab kabul. Notif grup WA keluarga nggak tembus ke speaker gantung, dan musik bisa turun halus pas penghulu mulai ngomong.',
-		name: 'Mas Hendra',
-		role: 'Tukang Sound Hajatan · Jawa Timur',
-		badge: 'MH',
-		tone: 'mint',
-	},
-	{
-		quote:
-			'Sebelum kru berangkat loading, playlist diberesin dulu di laptop. Lagu download-an YouTube yang suaranya mendem ketahuan semua, volumenya jadi rata pas dimainin.',
-		name: 'Cak Wahyu',
-		role: 'Owner Rental Audio · Jawa Tengah',
-		badge: 'CW',
-		tone: 'cyan',
-	},
-	{
-		quote:
-			'Laptop tinggal di meja operator, saya bisa jalan keliling depan panggung buat dengerin hasil suara sambil kontrol Play sama Fade Out langsung dari HP.',
-		name: 'Kang Dedi',
-		role: 'Operator Sound FOH · Jawa Barat',
-		badge: 'KD',
-		tone: 'gold',
-	},
-];
+export const DOWNLOAD_SECTION = {
+	eyebrow: '100% GRATIS · TANPA LISENSI & IKLAN',
+	heading: 'Download Gratis untuk Perangkat Anda',
+	subheading:
+		'Seluruh fitur Desktop Windows (.exe) dan Android Native (.apk) dibagikan gratis sebagai bentuk dedikasi untuk komunitas tukang sound Indonesia—tanpa watermark, tanpa batas lagu, dan tanpa langganan.',
+	promises: [
+		'Gratis Penuh Semua Fitur',
+		'Tanpa Langganan & Iklan',
+		'Dedikasi Tukang Sound',
+	],
+	platforms: [
+		{
+			id: 'windows',
+			badge: 'WINDOWS 10 / 11 (64-BIT)',
+			title: 'Desktop Windows',
+			version: 'Gratis · v1.0.0 · ~160 MB',
+			description:
+				'Paket lengkap untuk laptop operator: download YouTube & YT Music Premium, FOH Live Player, 8 Pad Hotkey, Fade In/Out, Tag Organizer, dan pemotong multitrack/video.',
+			primary: {
+				label: 'Download Gratis Setup (.exe)',
+				fileName: 'SwarariaAudioLab_Setup.exe',
+				url: '',
+			},
+			specs: [
+				'Installer Wizard (.exe) — tinggal Next hingga selesai, sudah termasuk FFmpeg & engine audio.',
+				'Dilengkapi Mode Remote Wi-Fi untuk dikontrol langsung dari HP maupun browser.',
+			],
+		},
+		{
+			id: 'android',
+			badge: 'ANDROID 8.0+ NATIVE',
+			title: 'Android Native',
+			version: 'Gratis · v0.6.0 · Mulai ~59 MB',
+			description:
+				'Pemutar panggung ringan dan responsif di HP: 31-Band Graphic EQ, Pad Slot, Brand Skin, download YT/YTM Premium, Safe Mode anti-notif WA, Stage RTA & Wi-Fi Server.',
+			primary: {
+				label: 'APK Gratis Ringan arm64-v8a (~59 MB)',
+				fileName: 'SWR-Player-arm64-v8a.apk',
+				url: '',
+			},
+			secondary: {
+				label: 'APK Gratis Universal (~101 MB)',
+				fileName: 'SWR-Player-universal.apk',
+				url: '',
+			},
+			specs: [
+				'Seluruh varian memiliki fitur yang sama persis; perbedaannya hanya pada dukungan arsitektur CPU di dalam APK.',
+				'Update cukup timpa APK tanpa uninstall agar daftar lagu dan playlist tetap aman.',
+			],
+			sizeGuideTitle: 'Penjelasan Ukuran File Besar & Kecil',
+			sizeGuide: [
+				{
+					label: 'Ukuran Kecil (~59 MB · Khusus 1 Arsitektur)',
+					detail:
+						'Varian arm64-v8a hanya menyertakan library FFmpeg, Python & yt-dlp untuk mayoritas HP Android modern 64-bit (tersedia juga versi khusus HP 32-bit lama armeabi-v7a) sehingga jauh lebih hemat kuota.',
+				},
+				{
+					label: 'Ukuran Besar (~101 MB – ~198 MB · Universal)',
+					detail:
+						'Varian Universal membundel 2 arsitektur HP sekaligus (arm64-v8a + armeabi-v7a, ~101 MB) atau lengkap 4 arsitektur termasuk emulator PC (x86/x86_64, ~198 MB). Pilih ini jika tidak yakin tipe prosesor HP atau ingin 1 file untuk semua perangkat.',
+				},
+			],
+		},
+	] satisfies PlatformDownloadCard[],
+};
 
 export const FOOTER_COPY = {
-	headlineLine1: 'JAGA ACARA',
-	headlineLine2: 'BERIKUTNYA',
-	scriptAccent: 'Lebih Nyaman!',
-	metaItems: [
-		{ icon: 'android', label: 'Android 10+ (.APK)' },
-		{ icon: 'desktop', label: 'Windows 10/11 (.EXE)' },
-		{ icon: 'offline', label: '100% Offline · Tanpa Iklan' },
-	],
-	ctaTitle: 'PASANG DI HP ATAU LAPTOP',
-	ctaDescription: 'Dibuat untuk tukang sound, soundman panggung, operator mixer, dan kru rental lapangan—pilih Android (.apk) atau Windows (.exe).',
-	ctaButton: 'DOWNLOAD SEKARANG',
-	copyright: '© 2026 SWR Player · Dari Meja Mixer untuk Tukang Sound & Operator Lapangan · Swararia Audio Lab.',
+	copyright: '© 2026 SWR Player by Swararia · 100% Gratis sebagai Dedikasi oleh Tukang Sound untuk Tukang Sound.',
+	backToTop: 'Kembali ke atas',
 };
-
-export const DOWNLOAD_PACKAGES: DownloadPackage[] = [
-	{
-		id: 'arm64',
-		platform: 'android',
-		archLabel: 'ANDROID · ARM64 (arm64-v8a)',
-		title: 'Rekomendasi HP Android Modern',
-		recommended: true,
-		approxSize: '~107 MB',
-		compatibility: 'Android 10+ (64-bit) — Samsung, Xiaomi, Oppo, Vivo, Realme terbaru.',
-		downloadUrl: '#release-arm64',
-		fileName: 'SWR-Player-arm64-v8a.apk',
-	},
-	{
-		id: 'armv7',
-		platform: 'android',
-		archLabel: 'ANDROID · ARMv7 (armeabi-v7a)',
-		title: 'HP Android Lama (32-bit)',
-		recommended: false,
-		approxSize: '~100 MB',
-		compatibility: 'HP Android 10+ 32-bit atau HP cadangan khusus meja mixer.',
-		downloadUrl: '#release-armv7',
-		fileName: 'SWR-Player-armeabi-v7a.apk',
-	},
-	{
-		id: 'win-setup',
-		platform: 'windows',
-		archLabel: 'DESKTOP WINDOWS · SETUP (.EXE)',
-		title: 'SWR Player & Audio Lab Desktop',
-		recommended: true,
-		approxSize: '~160 MB',
-		compatibility: 'Windows 10/11 — tinggal Next → Finish, sudah termasuk Python, UI, FFmpeg & FOH Player.',
-		downloadUrl: '#release-windows-setup',
-		fileName: 'SwarariaAudioLab_Setup.exe',
-	},
-];
-
-export const RELEASE_NOTES_SUMMARY = [
-	'Android (.APK): Pemutar panggung tahan notif WA, 16 tombol jingle/efek, layar logo rental, cek fasa speaker & mode server Wi-Fi tanpa kuota internet.',
-	'Windows (.EXE): Cek MP3 palsu mendem, ratakan volume semua lagu, rapikan nama file, potong rekaman multitrack/video & player laptop dengan remote QR.',
-	'Saat update versi Android, cukup timpa APK tanpa uninstall agar daftar lagu dan playlist rekan-rekan di HP tetap aman.',
-];

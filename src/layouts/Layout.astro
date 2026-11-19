@@ -17,88 +17,17 @@ const { title = SITE_META.title, description = SITE_META.description } = Astro.p
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/png" href="/images/swararia-logo.png" />
 		<link rel="icon" href="/favicon.ico" />
-
-		<!-- DNS Prefetch for external resources -->
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-		<!-- Critical CSS inline for typography (FOUC prevention & instant scale) -->
-		<style>
-			:root {
-				--font-heading: "Montserrat", sans-serif;
-				--font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-				--font-display: var(--font-heading);
-				--font-sans: var(--font-body);
-
-				--swr-text-display: clamp(2.25rem, 5vw, 4.25rem);
-				--swr-text-display-sub: clamp(1.85rem, 4vw, 3.25rem);
-				--swr-text-h2: clamp(1.75rem, 3.2vw, 2.25rem);
-				--swr-text-h3: clamp(1.2rem, 2vw, 1.35rem);
-				--swr-text-h4: 1.1rem;
-				--swr-text-lead: clamp(1.05rem, 1.8vw, 1.25rem);
-				--swr-text-body: 0.95rem;
-				--swr-text-body-sm: 0.875rem;
-				--swr-text-btn: 0.9rem;
-				--swr-text-tag: 0.75rem;
-				--swr-text-mono: 0.75rem;
-			}
-			html {
-				font-family: var(--font-body);
-			}
-			h1 {
-				font-family: var(--font-heading);
-				font-size: var(--swr-text-display);
-				font-weight: 800;
-				letter-spacing: -0.02em;
-				line-height: 1.05;
-			}
-			h2 {
-				font-family: var(--font-heading);
-				font-size: var(--swr-text-h2);
-				font-weight: 800;
-				letter-spacing: -0.02em;
-				line-height: 1.2;
-			}
-			h3 {
-				font-family: var(--font-heading);
-				font-size: var(--swr-text-h3);
-				font-weight: 800;
-				letter-spacing: -0.02em;
-				line-height: 1.25;
-			}
-			p {
-				font-family: var(--font-body);
-				font-size: var(--swr-text-body);
-				line-height: 1.6;
-			}
-		</style>
-
-		<!-- Google Fonts: Inter & Montserrat with optimizations (Typography from kodingus.com) -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			rel="preload"
-			as="style"
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
+			href="/fonts/montserrat-latin-variable.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
 		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
-			rel="stylesheet"
-			media="print"
-			onload="this.media='all'"
-		/>
-		<noscript>
-			<link
-				href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
-				rel="stylesheet"
-			/>
-		</noscript>
-
-		<link rel="preload" href="/fonts/satisfy-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#06224B" />
+		<meta name="theme-color" content="#ffffff" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
@@ -109,8 +38,27 @@ const { title = SITE_META.title, description = SITE_META.description } = Astro.p
 		<meta name="twitter:description" content={description} />
 	</head>
 	<body>
-		<div class="swr-page-shell">
-			<slot />
-		</div>
+		<slot />
+		<nav class="swr-mobile-dock" aria-label="Navigasi cepat mobile">
+			<a href="#top" class="swr-dock-link">On Air</a>
+			<a href="#cerita" class="swr-dock-link">Alur 01–05</a>
+			<a href="#fitur" class="swr-dock-link">Fitur</a>
+			<a href="#download" class="swr-dock-link is-primary">Unduh</a>
+		</nav>
+		<dialog id="swr-lightbox" class="swr-lightbox" aria-labelledby="swr-lightbox-caption">
+			<div class="swr-lightbox-card">
+				<div class="swr-lightbox-head">
+					<p id="swr-lightbox-caption" class="swr-lightbox-caption"></p>
+					<button type="button" id="swr-lightbox-close" class="swr-lightbox-close" aria-label="Tutup tampilan gambar">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<line x1="18" y1="6" x2="6" y2="18" />
+							<line x1="6" y1="6" x2="18" y2="18" />
+						</svg>
+					</button>
+				</div>
+				<img id="swr-lightbox-img" class="swr-lightbox-img" alt="" />
+			</div>
+		</dialog>
+		<script is:inline src="/scripts/landing.js" defer></script>
 	</body>
 </html>

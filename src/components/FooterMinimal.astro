@@ -1,0 +1,55 @@
+---
+import { FOOTER_COPY } from '../data/swrLanding';
+---
+
+<footer class="swr-footer">
+	<div class="swr-container swr-footer-inner">
+		<span>{FOOTER_COPY.copyright}</span>
+		<a href="#top" class="swr-footer-top">{FOOTER_COPY.backToTop} &uarr;</a>
+	</div>
+</footer>
+
+<style>
+	.swr-footer {
+		background-color: var(--swr-surface);
+		border-top: 1px solid var(--swr-border);
+		padding: 18px 0 22px;
+	}
+
+	.swr-footer-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 10px;
+		font-family: var(--font-ui);
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-footer-top {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		padding: 6px 12px;
+		color: var(--swr-ink);
+		font-weight: 600;
+	}
+
+	.swr-footer-top:hover {
+		color: var(--swr-accent);
+	}
+
+	@media (max-width: 600px) {
+		.swr-footer-inner {
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		.swr-footer-top {
+			padding-left: 0;
+		}
+	}
+</style>

@@ -1,0 +1,192 @@
+---
+import { FEATURES_SECTION } from '../data/swrLanding';
+---
+
+<section id="fitur" class="swr-features">
+	<div class="swr-container">
+		<div class="swr-section-head">
+			<span class="swr-kicker">{FEATURES_SECTION.eyebrow}</span>
+			<h2 class="swr-section-title">{FEATURES_SECTION.heading}</h2>
+			<p class="swr-section-sub">{FEATURES_SECTION.subheading}</p>
+		</div>
+
+		<div class="swr-features-grid">
+			{
+				FEATURES_SECTION.items.map((item) => (
+					<article class="swr-feature-card">
+						<div class="swr-feature-icon" aria-hidden="true">
+							{item.icon === 'download' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+									<polyline points="7 10 12 15 17 10" />
+									<line x1="12" y1="15" x2="12" y2="3" />
+								</svg>
+							)}
+							{item.icon === 'fade' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M3 6h4c4.5 0 6.5 12 14 12" />
+									<polyline points="18 15 21 18 18 21" />
+								</svg>
+							)}
+							{item.icon === 'wifi' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12.55a11 11 0 0 1 14.08 0" />
+									<path d="M1.42 9a16 16 0 0 1 21.16 0" />
+									<path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+									<circle cx="12" cy="20" r="1" fill="currentColor" />
+								</svg>
+							)}
+							{item.icon === 'eq31' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<line x1="4" y1="21" x2="4" y2="14" />
+									<line x1="4" y1="10" x2="4" y2="3" />
+									<line x1="12" y1="21" x2="12" y2="12" />
+									<line x1="12" y1="8" x2="12" y2="3" />
+									<line x1="20" y1="21" x2="20" y2="16" />
+									<line x1="20" y1="12" x2="20" y2="3" />
+									<line x1="1" y1="14" x2="7" y2="14" />
+									<line x1="9" y1="8" x2="15" y2="8" />
+									<line x1="17" y1="16" x2="23" y2="16" />
+								</svg>
+							)}
+							{item.icon === 'pad' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<rect x="3" y="3" width="7" height="7" rx="1.5" />
+									<rect x="14" y="3" width="7" height="7" rx="1.5" />
+									<rect x="14" y="14" width="7" height="7" rx="1.5" />
+									<rect x="3" y="14" width="7" height="7" rx="1.5" />
+								</svg>
+							)}
+							{item.icon === 'skin' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+									<circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+									<circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+									<circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+									<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+								</svg>
+							)}
+							{item.icon === 'safemode' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+									<path d="m9 12 2 2 4-4" />
+								</svg>
+							)}
+							{item.icon === 'rta' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M2 12h3l2.5-6 4 12 3-8 2.5 2H22" />
+								</svg>
+							)}
+							{item.icon === 'organizer' && (
+								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+									<line x1="9" y1="14" x2="15" y2="14" />
+								</svg>
+							)}
+						</div>
+						<h3 class="swr-feature-title">{item.title}</h3>
+						<p class="swr-feature-desc">{item.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.swr-features {
+		background-color: var(--swr-surface);
+		border-bottom: 1px solid var(--swr-border);
+		padding: 52px 0 60px;
+	}
+
+	.swr-features-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.swr-feature-card {
+		background-color: var(--swr-surface-alt);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-lg);
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		transition: border-color 140ms ease;
+	}
+
+	.swr-feature-card:hover {
+		border-color: var(--swr-border-strong);
+	}
+
+	.swr-feature-icon {
+		width: 40px;
+		height: 40px;
+		border-radius: var(--swr-radius-md);
+		background-color: var(--swr-surface);
+		border: 1px solid var(--swr-border);
+		color: var(--swr-ink);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.swr-feature-title {
+		font-size: 1.02rem;
+		font-weight: 700;
+		line-height: 1.3;
+		margin: 0;
+	}
+
+	.swr-feature-desc {
+		font-size: 0.88rem;
+		line-height: 1.58;
+		color: var(--swr-ink-2);
+		margin: 0;
+	}
+
+	@media (max-width: 960px) {
+		.swr-features-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-features {
+			padding: 28px 0 38px;
+		}
+
+		.swr-features-grid {
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
+
+		.swr-feature-card {
+			display: grid;
+			grid-template-columns: 38px minmax(0, 1fr);
+			align-items: start;
+			gap: 4px 12px;
+			padding: 14px;
+			border-radius: 10px;
+		}
+
+		.swr-feature-icon {
+			grid-row: 1 / 3;
+			width: 38px;
+			height: 38px;
+			border-radius: var(--swr-radius-sm);
+		}
+
+		.swr-feature-title {
+			font-size: 0.96rem;
+			line-height: 1.28;
+		}
+
+		.swr-feature-desc {
+			font-size: 0.84rem;
+			line-height: 1.5;
+		}
+	}
+</style>
