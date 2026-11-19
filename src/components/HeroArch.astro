@@ -1,0 +1,782 @@
+﻿---
+import { HERO_COPY, SITE_META } from '../data/swrLanding';
+---
+
+<section id="top" class="swr-hero">
+	<div class="swr-container swr-hero-grid">
+		<!-- Left Column: Bold 3-Line Display + Script + CTAs -->
+		<div class="swr-hero-left">
+			<div class="swr-version-tag">
+				<span class="swr-version-dot" aria-hidden="true"></span>
+				<span>{SITE_META.versionLabel}</span>
+			</div>
+
+			<h1 class="swr-hero-title">
+				<span class="swr-hero-line">{HERO_COPY.line1}</span>
+				<span class="swr-hero-line">{HERO_COPY.line2}</span>
+				<span class="swr-hero-line swr-hero-line-last">
+					<span>{HERO_COPY.line3}</span>
+					<span class="swr-script swr-hero-script">{HERO_COPY.scriptAccent}</span>
+				</span>
+			</h1>
+
+			<p class="swr-hero-desc">{HERO_COPY.description}</p>
+
+			<div class="swr-hero-actions">
+				<button type="button" class="swr-btn swr-btn-cyan" data-open-download="true">
+					<span>{HERO_COPY.primaryCta}</span>
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+				</button>
+				<a href="#modul" class="swr-btn swr-btn-ghost">
+					<span>{HERO_COPY.secondaryCta}</span>
+					<span class="swr-circle-icon" aria-hidden="true">
+						<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+					</span>
+				</a>
+			</div>
+		</div>
+
+		<!-- Right Column: Cyan-Navy Arch Cutout + Real Console Visual + Floating Circle Badge -->
+		<div class="swr-hero-right">
+			<div class="swr-arch-backdrop">
+				<!-- Radial acoustic burst behind phone -->
+				<svg
+					class="swr-ornament swr-arch-rays"
+					viewBox="0 0 220 220"
+					fill="none"
+					aria-hidden="true"
+				>
+					<g stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linecap="round">
+						<line x1="110" y1="12" x2="110" y2="54" />
+						<line x1="110" y1="166" x2="110" y2="208" />
+						<line x1="12" y1="110" x2="54" y2="110" />
+						<line x1="166" y1="110" x2="208" y2="110" />
+						<line x1="40" y1="40" x2="72" y2="72" />
+						<line x1="148" y1="148" x2="180" y2="180" />
+						<line x1="180" y1="40" x2="148" y2="72" />
+						<line x1="72" y1="148" x2="40" y2="180" />
+						<line x1="72" y1="20" x2="88" y2="58" />
+						<line x1="148" y1="20" x2="132" y2="58" />
+						<line x1="20" y1="72" x2="58" y2="88" />
+						<line x1="200" y1="72" x2="162" y2="88" />
+					</g>
+				</svg>
+
+				<!-- Secondary Windows Workstation Card peeking behind -->
+				<div class="swr-rta-peek" aria-hidden="true">
+					<div class="swr-rta-peek-head">
+						<span class="swr-rta-peek-dot"></span>
+						<span>LAPTOP WINDOWS</span>
+					</div>
+					<div class="swr-rta-peek-badge">Suara Jernih · Volume Rata</div>
+					<div class="swr-rta-peek-warn">MP3 Palsu Terdeteksi</div>
+					<div class="swr-rta-peek-bars">
+						<span style="height: 12px"></span>
+						<span style="height: 24px"></span>
+						<span style="height: 18px"></span>
+						<span style="height: 32px"></span>
+						<span style="height: 28px"></span>
+						<span style="height: 20px"></span>
+					</div>
+				</div>
+
+				<!-- Primary Android FOH Mobile Console Deck Mockup -->
+				<div class="swr-phone-frame" role="img" aria-label="Mockup tampilan SWR Player di HP Meja Mixer">
+					<div class="swr-deck-head">
+						<div class="swr-deck-brand">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="swr-head-icon" aria-hidden="true">
+								<rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+								<line x1="12" y1="18" x2="12.01" y2="18" />
+							</svg>
+							<span>SWR HP</span>
+						</div>
+						<div class="swr-deck-tags">
+							<span class="swr-badge safe">WA Diam</span>
+							<span class="swr-badge warn">Terkunci</span>
+						</div>
+					</div>
+
+					<div class="swr-deck-status">
+						<span class="swr-status-route">Colok Kabel Mixer</span>
+						<span class="swr-status-pill">Siap Putar</span>
+					</div>
+
+					<div class="swr-deck-track">
+						<div class="swr-track-badge">PUTAR 1x · STOP OTOMATIS</div>
+						<div class="swr-track-time">-00:14</div>
+					</div>
+
+					<div class="swr-track-info">
+						<div class="swr-track-title">Kirab Pengantin (Instrumen)</div>
+						<div class="swr-track-meta">Playlist: Resepsi Utama</div>
+					</div>
+
+					<div class="swr-deck-waveform" aria-hidden="true">
+						<div class="swr-wave-bar played" style="width: 72%"></div>
+						<div class="swr-wave-needle" style="left: 72%"></div>
+					</div>
+
+					<div class="swr-deck-stop-label">Sisa 14 detik, berhenti otomatis</div>
+
+					<div class="swr-pad-grid">
+						<div class="swr-pad-item">Tepuk Tangan</div>
+						<div class="swr-pad-item">Drumroll</div>
+						<div class="swr-pad-item accent">Kecilkan MC</div>
+						<div class="swr-pad-item">Gabung Mono</div>
+					</div>
+
+					<div class="swr-deck-controls">
+						<div class="swr-deck-row">
+							<span class="swr-deck-btn">Prev</span>
+							<span class="swr-deck-btn primary">Pause</span>
+							<span class="swr-deck-btn">Stop</span>
+							<span class="swr-deck-btn">Next</span>
+						</div>
+						<div class="swr-deck-row">
+							<span class="swr-deck-action cue">Ulang 00:00</span>
+							<span class="swr-deck-action fade">
+								<svg class="swr-fade-mini-icon" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+									<path d="M1 2C6 2 9 10 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+								</svg>
+								Fade Out 3s
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Floating Circular Badge (bottom-left overlap of arch) -->
+			<div class="swr-floating-badge">
+				<span class="swr-floating-top">{HERO_COPY.floatingBadgeTop}</span>
+				<span class="swr-floating-bottom">{HERO_COPY.floatingBadgeBottom}</span>
+				<svg class="swr-floating-star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4-2.4 7.6-2.4-7.6-7.6-2.4 7.6-2.4z"/></svg>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.swr-hero {
+		padding-top: 28px;
+		padding-bottom: 56px;
+	}
+
+	.swr-hero-grid {
+		display: grid;
+		grid-template-columns: 1.05fr 0.95fr;
+		align-items: center;
+		gap: 36px;
+	}
+
+	.swr-hero-left {
+		position: relative;
+		padding-top: 10px;
+		padding-bottom: 24px;
+	}
+
+	.swr-version-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: var(--swr-surface);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-pill);
+		padding: 6px 14px;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-tag, 0.75rem);
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--swr-navy);
+		margin-bottom: 16px;
+		box-shadow: var(--swr-shadow-soft);
+	}
+
+	.swr-version-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--swr-mint);
+		box-shadow: 0 0 0 3px rgba(59, 212, 164, 0.25);
+	}
+
+	.swr-hero-title {
+		margin: 0 0 18px;
+		display: flex;
+		flex-direction: column;
+		font-family: var(--font-display);
+		font-size: var(--swr-text-display, clamp(2.25rem, 5vw, 4.25rem));
+		font-weight: 800;
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		color: var(--swr-navy);
+	}
+
+	.swr-hero-line {
+		display: block;
+	}
+
+	.swr-hero-line-last {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.swr-hero-script {
+		font-size: var(--swr-text-display-sub, clamp(1.85rem, 4vw, 3.25rem));
+		font-weight: 400;
+		line-height: 1.08;
+		margin-left: 6px;
+	}
+
+	.swr-hero-desc {
+		margin: 0 0 26px;
+		max-width: 540px;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-lead, clamp(1.05rem, 1.8vw, 1.25rem));
+		font-weight: 400;
+		line-height: 1.6;
+		letter-spacing: 0;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-hero-actions {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 14px;
+	}
+
+	.swr-circle-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		border: 1.5px solid var(--swr-navy);
+		font-size: 12px;
+	}
+
+	/* Right Arch Column */
+	.swr-hero-right {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.swr-arch-backdrop {
+		position: relative;
+		width: 100%;
+		max-width: 470px;
+		min-height: 520px;
+		background: linear-gradient(160deg, #00a8f3 0%, #05559c 55%, #06224b 100%);
+		border-top-left-radius: 240px;
+		border-top-right-radius: 240px;
+		border-bottom-left-radius: 32px;
+		border-bottom-right-radius: 32px;
+		padding: 58px 26px 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		box-shadow: 0 24px 56px rgba(6, 34, 75, 0.22);
+	}
+
+	.swr-arch-rays {
+		position: absolute;
+		top: -12px;
+		right: -12px;
+		width: 220px;
+		height: 220px;
+	}
+
+	.swr-rta-peek {
+		position: absolute;
+		right: 12px;
+		top: 32px;
+		z-index: 1;
+		width: 178px;
+		background: var(--swr-console-bg);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 16px;
+		padding: 10px;
+		transform: rotate(5deg);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+		opacity: 0.96;
+	}
+
+	.swr-rta-peek-head {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		font-size: 8.5px;
+		font-weight: 800;
+		letter-spacing: 0.05em;
+		color: var(--swr-console-bt);
+		margin-bottom: 5px;
+	}
+
+	.swr-rta-peek-badge {
+		font-size: 8px;
+		font-weight: 700;
+		color: var(--swr-console-safe);
+		background: #132b21;
+		border: 1px solid #285944;
+		border-radius: 6px;
+		padding: 3px 6px;
+		margin-bottom: 4px;
+		text-align: center;
+	}
+
+	.swr-rta-peek-warn {
+		font-size: 8px;
+		font-weight: 700;
+		color: var(--swr-console-alert);
+		background: #351b1b;
+		border: 1px solid #843b38;
+		border-radius: 6px;
+		padding: 3px 6px;
+		margin-bottom: 7px;
+		text-align: center;
+	}
+
+	.swr-rta-peek-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--swr-console-safe);
+	}
+
+	.swr-rta-peek-bars {
+		display: flex;
+		align-items: flex-end;
+		gap: 4px;
+		height: 34px;
+		background: var(--swr-console-card);
+		border-radius: 8px;
+		padding: 4px 6px;
+	}
+
+	.swr-rta-peek-bars span {
+		flex: 1;
+		background: var(--swr-console-alert);
+		border-radius: 2px;
+	}
+
+	.swr-rta-peek-bars span:nth-child(even) {
+		background: var(--swr-console-safe);
+	}
+
+	/* Android Mockup Inside Arch */
+	.swr-phone-frame {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		max-width: 360px;
+		background: var(--swr-console-bg);
+		border: 3px solid #1e2c27;
+		border-radius: 28px;
+		padding: 16px;
+		color: var(--swr-console-text);
+		box-shadow: 0 20px 44px rgba(4, 21, 48, 0.45);
+		transform: rotate(-1.5deg);
+		margin-right: 18px;
+	}
+
+	.swr-deck-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 12px;
+	}
+
+	.swr-deck-brand {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 11px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		color: var(--swr-console-bt);
+	}
+
+	.swr-head-icon {
+		width: 15px;
+		height: 15px;
+	}
+
+	.swr-deck-tags {
+		display: flex;
+		gap: 5px;
+	}
+
+	.swr-badge {
+		font-size: 9.5px;
+		font-weight: 700;
+		padding: 3px 8px;
+		border-radius: 999px;
+	}
+
+	.swr-badge.safe {
+		background: #132b21;
+		color: var(--swr-console-safe);
+		border: 1px solid #285944;
+	}
+
+	.swr-badge.warn {
+		background: #2e2311;
+		color: var(--swr-console-warn);
+		border: 1px solid #6b511f;
+	}
+
+	.swr-deck-status {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: var(--swr-console-card);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 12px;
+		padding: 8px 12px;
+		margin-bottom: 12px;
+	}
+
+	.swr-status-route {
+		font-size: 11.5px;
+		font-weight: 700;
+		color: var(--swr-console-text);
+	}
+
+	.swr-status-pill {
+		font-size: 10px;
+		font-weight: 800;
+		background: #132b21;
+		color: var(--swr-console-safe);
+		padding: 3px 8px;
+		border-radius: 999px;
+	}
+
+	.swr-deck-track {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 4px;
+	}
+
+	.swr-track-badge {
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		background: #2e2311;
+		color: var(--swr-console-warn);
+		padding: 3px 8px;
+		border-radius: 6px;
+	}
+
+	.swr-track-time {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		font-weight: 800;
+		color: var(--swr-console-warn);
+	}
+
+	.swr-track-info {
+		margin-bottom: 10px;
+	}
+
+	.swr-track-title {
+		font-size: 13px;
+		font-weight: 800;
+		color: #ffffff;
+		line-height: 1.25;
+	}
+
+	.swr-track-meta {
+		font-size: 10px;
+		color: var(--swr-console-muted);
+	}
+
+	.swr-deck-waveform {
+		position: relative;
+		height: 6px;
+		background: var(--swr-console-card);
+		border-radius: 999px;
+		margin-bottom: 6px;
+		overflow: hidden;
+	}
+
+	.swr-wave-bar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background: linear-gradient(90deg, var(--swr-console-safe), var(--swr-console-warn));
+		border-radius: 999px;
+	}
+
+	.swr-wave-needle {
+		position: absolute;
+		top: -2px;
+		width: 4px;
+		height: 10px;
+		background: #ffffff;
+		border-radius: 2px;
+	}
+
+	.swr-deck-stop-label {
+		font-size: 10px;
+		font-weight: 700;
+		color: var(--swr-console-warn);
+		margin-bottom: 12px;
+	}
+
+	.swr-pad-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 6px;
+		margin-bottom: 14px;
+	}
+
+	.swr-pad-item {
+		background: var(--swr-console-card);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 10px;
+		padding: 9px 8px;
+		font-size: 10px;
+		font-weight: 700;
+		text-align: center;
+		color: var(--swr-console-text);
+	}
+
+	.swr-pad-item.accent {
+		background: #2e2311;
+		border-color: #6b511f;
+		color: var(--swr-console-warn);
+	}
+
+	.swr-deck-controls {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.swr-deck-row {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 5px;
+	}
+
+	.swr-deck-row:last-child {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.swr-deck-btn {
+		background: var(--swr-console-deck);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 8px;
+		padding: 7px 4px;
+		font-size: 10px;
+		font-weight: 700;
+		text-align: center;
+		color: var(--swr-console-text);
+	}
+
+	.swr-deck-btn.primary {
+		background: var(--swr-console-safe);
+		border-color: var(--swr-console-safe);
+		color: #0d1713;
+		font-weight: 800;
+	}
+
+	.swr-deck-action {
+		background: var(--swr-console-deck);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 8px;
+		padding: 7px 8px;
+		font-size: 9.5px;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		color: var(--swr-console-text);
+	}
+
+	.swr-deck-action.cue {
+		color: var(--swr-console-warn);
+	}
+
+	.swr-deck-action.fade {
+		color: var(--swr-console-safe);
+	}
+
+	.swr-fade-mini-icon {
+		width: 14px;
+		height: 10px;
+	}
+
+	/* Floating circular badge */
+	.swr-floating-badge {
+		position: absolute;
+		left: -22px;
+		bottom: 34px;
+		z-index: 4;
+		width: 110px;
+		height: 110px;
+		border-radius: 50%;
+		background: #06224b;
+		border: 3px solid #ffffff;
+		box-shadow: 0 14px 28px rgba(6, 34, 75, 0.35);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: #ffffff;
+		line-height: 1.1;
+		padding: 8px;
+		transform: rotate(-8deg);
+	}
+
+	.swr-floating-top {
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		color: #8ce3c7;
+	}
+
+	.swr-floating-bottom {
+		font-size: 10px;
+		font-weight: 800;
+		color: #ffffff;
+	}
+
+	.swr-floating-star {
+		color: #f4ce6a;
+		margin-top: 3px;
+	}
+
+	@media (max-width: 920px) {
+		.swr-hero {
+			padding-bottom: 20px;
+		}
+
+		.swr-hero-grid {
+			grid-template-columns: 1fr;
+			gap: 28px;
+		}
+
+		.swr-arch-backdrop {
+			min-height: 440px;
+		}
+
+		.swr-phone-frame {
+			margin-right: 28px;
+		}
+
+		.swr-floating-badge {
+			left: 6px;
+			bottom: 28px;
+			width: 96px;
+			height: 96px;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-hero {
+			padding-top: 14px;
+			padding-bottom: 12px;
+		}
+
+		.swr-hero-left {
+			padding-top: 8px;
+			padding-bottom: 6px;
+		}
+
+		.swr-hero-title {
+			font-size: clamp(1.5rem, 6.2vw, 2.2rem);
+			line-height: 1.1;
+			margin-bottom: 14px;
+			word-break: normal;
+			overflow-wrap: break-word;
+		}
+
+		.swr-hero-script {
+			font-size: clamp(1.35rem, 5.5vw, 1.95rem);
+			margin-left: 4px;
+		}
+
+		.swr-hero-desc {
+			font-size: 1rem;
+			margin-bottom: 20px;
+		}
+
+		.swr-hero-right {
+			padding-bottom: 12px;
+		}
+
+		.swr-arch-backdrop {
+			border-top-left-radius: 160px;
+			border-top-right-radius: 160px;
+			min-height: auto;
+			padding: 28px 14px 36px;
+		}
+
+		.swr-phone-frame {
+			transform: none;
+			max-width: 100%;
+			margin-right: 0;
+		}
+
+		.swr-floating-badge {
+			top: -14px;
+			right: 10px;
+			bottom: auto;
+			left: auto;
+			width: 84px;
+			height: 84px;
+			padding: 6px;
+		}
+
+		.swr-floating-top {
+			font-size: 8.5px;
+		}
+
+		.swr-floating-bottom {
+			font-size: 8.5px;
+		}
+
+		.swr-floating-star {
+			font-size: 11px;
+			margin-top: 1px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.swr-rta-peek {
+			display: none;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.swr-hero-title {
+			font-size: clamp(1.4rem, 6vw, 1.85rem);
+		}
+
+		.swr-hero-actions {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 10px;
+		}
+
+		.swr-hero-actions .swr-btn-cyan {
+			width: 100%;
+		}
+
+		.swr-hero-actions .swr-btn-ghost {
+			justify-content: center;
+		}
+	}
+</style>

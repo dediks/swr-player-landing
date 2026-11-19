@@ -1,23 +1,116 @@
+---
+import '../styles/global.css';
+import { SITE_META } from '../data/swrLanding';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = SITE_META.title, description = SITE_META.description } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="id">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/images/swararia-logo.png" />
 		<link rel="icon" href="/favicon.ico" />
+
+		<!-- DNS Prefetch for external resources -->
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+		<!-- Critical CSS inline for typography (FOUC prevention & instant scale) -->
+		<style>
+			:root {
+				--font-heading: "Montserrat", sans-serif;
+				--font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+				--font-display: var(--font-heading);
+				--font-sans: var(--font-body);
+
+				--swr-text-display: clamp(2.25rem, 5vw, 4.25rem);
+				--swr-text-display-sub: clamp(1.85rem, 4vw, 3.25rem);
+				--swr-text-h2: clamp(1.75rem, 3.2vw, 2.25rem);
+				--swr-text-h3: clamp(1.2rem, 2vw, 1.35rem);
+				--swr-text-h4: 1.1rem;
+				--swr-text-lead: clamp(1.05rem, 1.8vw, 1.25rem);
+				--swr-text-body: 0.95rem;
+				--swr-text-body-sm: 0.875rem;
+				--swr-text-btn: 0.9rem;
+				--swr-text-tag: 0.75rem;
+				--swr-text-mono: 0.75rem;
+			}
+			html {
+				font-family: var(--font-body);
+			}
+			h1 {
+				font-family: var(--font-heading);
+				font-size: var(--swr-text-display);
+				font-weight: 800;
+				letter-spacing: -0.02em;
+				line-height: 1.05;
+			}
+			h2 {
+				font-family: var(--font-heading);
+				font-size: var(--swr-text-h2);
+				font-weight: 800;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+			}
+			h3 {
+				font-family: var(--font-heading);
+				font-size: var(--swr-text-h3);
+				font-weight: 800;
+				letter-spacing: -0.02em;
+				line-height: 1.25;
+			}
+			p {
+				font-family: var(--font-body);
+				font-size: var(--swr-text-body);
+				line-height: 1.6;
+			}
+		</style>
+
+		<!-- Google Fonts: Inter & Montserrat with optimizations (Typography from kodingus.com) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
+			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
+		/>
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap"
+				rel="stylesheet"
+			/>
+		</noscript>
+
+		<link rel="preload" href="/fonts/satisfy-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#06224B" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/images/swararia-logo.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
 	</head>
 	<body>
-		<slot />
+		<div class="swr-page-shell">
+			<slot />
+		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

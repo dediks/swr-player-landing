@@ -1,0 +1,276 @@
+---
+import { NAV_LINKS, SITE_META } from '../data/swrLanding';
+---
+
+<header class="swr-nav-wrap">
+	<div class="swr-container swr-nav">
+		<a href="#top" class="swr-brand" aria-label="SWR Player by Swararia">
+			<img
+				src="/images/swararia-logo.png"
+				alt="Logo Swararia"
+				width="42"
+				height="42"
+				class="swr-brand-logo"
+			/>
+			<span class="swr-brand-text">
+				<span class="swr-brand-main">{SITE_META.brandName}</span>
+				<span class="swr-brand-sub">{SITE_META.brandSub}</span>
+			</span>
+		</a>
+
+		<nav class="swr-nav-links" aria-label="Navigasi utama">
+			{
+				NAV_LINKS.map((item) => (
+					<a href={item.href} class="swr-nav-link">
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<div class="swr-nav-actions">
+			<button
+				type="button"
+				id="swrThemeToggle"
+				class="swr-theme-toggle"
+				data-theme-toggle="true"
+				aria-label="Ganti mode tampilan"
+				aria-pressed="false"
+			>
+				<span class="swr-theme-icon" data-theme-icon="true" aria-hidden="true">🌙</span>
+				<span class="swr-theme-label" data-theme-label="true">DARK</span>
+			</button>
+
+			<button type="button" class="swr-btn swr-btn-cyan swr-nav-cta" data-open-download="true">
+				<span>DOWNLOAD</span>
+				<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4-2.4 7.6-2.4-7.6-7.6-2.4 7.6-2.4z"/></svg>
+			</button>
+		</div>
+	</div>
+
+	<nav class="swr-mobile-jump" aria-label="Navigasi cepat mobile">
+		{
+			NAV_LINKS.map((item) => (
+				<a href={item.href} class="swr-mobile-chip">
+					{item.label}
+				</a>
+			))
+		}
+	</nav>
+</header>
+
+<style>
+	.swr-nav-wrap {
+		position: sticky;
+		top: 0;
+		z-index: 40;
+		background: var(--swr-nav-bg);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--swr-border);
+	}
+
+	.swr-nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+
+	.swr-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		flex-shrink: 0;
+	}
+
+	.swr-brand-logo {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		box-shadow: 0 4px 12px rgba(6, 34, 75, 0.2);
+	}
+
+	.swr-brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.02;
+	}
+
+	.swr-brand-main {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.15rem;
+		letter-spacing: -0.02em;
+		color: var(--swr-navy);
+	}
+
+	.swr-brand-sub {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: var(--swr-text-mono, 0.72rem);
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--swr-accent-text);
+	}
+
+	.swr-nav-links {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	.swr-nav-link {
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-btn, 0.9rem);
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		color: var(--swr-navy);
+		opacity: 0.82;
+		transition: opacity 150ms ease, color 150ms ease;
+	}
+
+	.swr-nav-link:hover {
+		opacity: 1;
+		color: var(--swr-accent-text);
+	}
+
+	.swr-nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-shrink: 0;
+	}
+
+	.swr-theme-toggle {
+		border: 1px solid var(--swr-border);
+		background: var(--swr-surface);
+		color: var(--swr-navy);
+		border-radius: var(--swr-radius-pill);
+		padding: 9px 14px;
+		font-family: var(--font-sans);
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		min-height: 44px;
+		transition:
+			background-color 150ms ease,
+			border-color 150ms ease,
+			color 150ms ease;
+	}
+
+	.swr-theme-toggle:hover {
+		border-color: var(--swr-accent-text);
+	}
+
+	.swr-theme-icon {
+		font-size: 13px;
+		line-height: 1;
+	}
+
+	.swr-nav-cta {
+		padding: 11px 18px;
+		font-size: var(--swr-text-btn, 0.875rem);
+	}
+
+	.swr-mobile-jump {
+		display: none;
+	}
+
+	@media (max-width: 960px) {
+		.swr-nav-links {
+			display: none;
+		}
+
+		.swr-mobile-jump {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			overflow-x: auto;
+			padding: 8px 24px 12px;
+			border-top: 1px solid var(--swr-border);
+			scrollbar-width: none;
+		}
+
+		.swr-mobile-jump::-webkit-scrollbar {
+			display: none;
+		}
+
+		.swr-mobile-chip {
+			flex-shrink: 0;
+			white-space: nowrap;
+			border-radius: var(--swr-radius-pill);
+			background: var(--swr-surface);
+			border: 1px solid var(--swr-border);
+			color: var(--swr-navy);
+			font-family: var(--font-sans);
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.05em;
+			padding: 7px 13px;
+			min-height: 34px;
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.swr-mobile-chip:hover {
+			border-color: var(--swr-cyan);
+			color: var(--swr-accent-text);
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-brand {
+			gap: 8px;
+		}
+
+		.swr-brand-logo {
+			width: 34px;
+			height: 34px;
+		}
+
+		.swr-brand-main {
+			font-size: 15px;
+		}
+
+		.swr-brand-sub {
+			font-size: 8.5px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.swr-theme-label {
+			display: none;
+		}
+
+		.swr-theme-toggle {
+			padding: 9px 11px;
+			min-height: 40px;
+		}
+
+		.swr-nav-cta {
+			padding: 9px 14px;
+			font-size: 11px;
+		}
+	}
+
+	@media (max-width: 380px) {
+		.swr-mobile-jump {
+			padding-inline: 14px;
+		}
+
+		.swr-nav-actions {
+			gap: 6px;
+		}
+
+		.swr-nav-cta {
+			padding: 8px 11px;
+			font-size: 10.5px;
+		}
+	}
+</style>

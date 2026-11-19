@@ -1,0 +1,318 @@
+﻿---
+import { FOH_SERVICES, STATS_NUMBERS } from '../data/swrLanding';
+---
+
+<section class="swr-split-section">
+	<div class="swr-container swr-split-grid">
+		<!-- Left Box: 2x3 FOH Features -->
+		<div id="fitur-foh" class="swr-services-panel">
+			<h2 class="swr-panel-heading">MASALAH LAPANGAN YANG TERATASI</h2>
+			<div class="swr-services-grid">
+				{
+					FOH_SERVICES.map((srv) => (
+						<div class="swr-service-item">
+							<span class={`swr-service-badge tone-${srv.tone}`} aria-hidden="true">
+								{srv.icon === 'safe' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+										<path d="M13.73 21a2 2 0 0 1-3.46 0" />
+										<line x1="2" y1="2" x2="22" y2="22" />
+									</svg>
+								)}
+								{srv.icon === 'guard' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<rect x="4" y="11" width="16" height="10" rx="2" />
+										<path d="M8 11V7a4 4 0 0 1 8 0v4" />
+									</svg>
+								)}
+								{srv.icon === 'duck' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M3 6h5c4 0 6 12 13 12" />
+										<path d="M18 15l3 3-3 3" />
+									</svg>
+								)}
+								{srv.icon === 'monosum' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+										<line x1="6" y1="18" x2="6" y2="10" />
+										<line x1="12" y1="18" x2="12" y2="6" />
+										<line x1="18" y1="18" x2="18" y2="10" />
+										<path d="M4 10h16" stroke-dasharray="2 2" />
+									</svg>
+								)}
+								{srv.icon === 'phase' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M2 13h4l3-7 4 12 3-5h6" />
+									</svg>
+								)}
+								{srv.icon === 'skin' && (
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M5 12.55a11 11 0 0 1 14.08 0" />
+										<path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+										<circle cx="12" cy="20" r="1" fill="currentColor" />
+									</svg>
+								)}
+							</span>
+							<div>
+								<span class="swr-service-platform">{srv.platformTag}</span>
+								<h3 class="swr-service-title">{srv.title}</h3>
+								<p class="swr-service-desc">{srv.description}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<!-- Right Box: 2x2 Numbers Bento -->
+		<div id="angka" class="swr-numbers-panel">
+			<h2 class="swr-panel-heading">
+				<span>KENAPA TUKANG SOUND</span>
+				<span class="swr-heading-accent">PILIH SWR PLAYER</span>
+			</h2>
+
+			<div class="swr-numbers-grid">
+				{
+					STATS_NUMBERS.map((stat) => (
+						<div class={`swr-stat-card tone-${stat.tone}`}>
+							<div class="swr-stat-val">{stat.value}</div>
+							<div class="swr-stat-label">{stat.label}</div>
+							<p class="swr-stat-sub">{stat.sublabel}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.swr-split-section {
+		padding-top: 0;
+		padding-bottom: var(--swr-section-gap);
+	}
+
+	.swr-split-grid {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: 24px;
+		align-items: stretch;
+	}
+
+	.swr-services-panel {
+		background: var(--swr-bg-soft);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-xl);
+		padding: 28px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.swr-numbers-panel {
+		padding: 28px 0 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.swr-panel-heading {
+		margin: 0 0 22px;
+		font-family: var(--font-display);
+		font-size: var(--swr-text-h2, clamp(1.75rem, 3.2vw, 2.25rem));
+		font-weight: 800;
+		line-height: 1.16;
+		letter-spacing: -0.02em;
+		color: var(--swr-navy);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.swr-heading-accent {
+		color: var(--swr-accent-text);
+	}
+
+	.swr-services-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px 18px;
+	}
+
+	.swr-service-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.swr-service-badge {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--swr-navy);
+		flex-shrink: 0;
+		box-shadow: 0 6px 14px rgba(6, 34, 75, 0.1);
+	}
+
+	.swr-service-badge svg {
+		width: 19px;
+		height: 19px;
+	}
+
+	.swr-service-badge.tone-cyan {
+		background: var(--swr-cyan-soft);
+	}
+
+	.swr-service-badge.tone-mint {
+		background: var(--swr-mint-soft);
+	}
+
+	.swr-service-badge.tone-gold {
+		background: var(--swr-gold-soft);
+	}
+
+	.swr-service-platform {
+		display: inline-block;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-tag, 0.75rem);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		color: var(--swr-accent-text);
+		background: var(--swr-surface);
+		border: 1px solid var(--swr-border);
+		border-radius: 999px;
+		padding: 2px 8px;
+		margin-bottom: 5px;
+	}
+
+	.swr-service-title {
+		margin: 0 0 4px;
+		font-family: var(--font-display);
+		font-size: var(--swr-text-h4, 1.1rem);
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--swr-navy);
+	}
+
+	.swr-service-desc {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-body-sm, 0.875rem);
+		font-weight: 400;
+		line-height: 1.55;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-numbers-grid {
+		flex: 1;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+	}
+
+	.swr-stat-card {
+		border-radius: var(--swr-radius-md);
+		border: 1px solid var(--swr-stat-border);
+		padding: 20px 16px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-shadow: var(--swr-shadow-soft);
+	}
+
+	.swr-stat-card.tone-soft-cyan {
+		background: var(--swr-cyan-soft);
+		color: var(--swr-navy);
+	}
+
+	.swr-stat-card.tone-electric-cyan {
+		background: linear-gradient(145deg, var(--swr-cyan), var(--swr-cyan-dark));
+		border-color: transparent;
+		color: #ffffff;
+	}
+
+	.swr-stat-card.tone-soft-mint {
+		background: var(--swr-mint-soft);
+		color: var(--swr-navy);
+	}
+
+	.swr-stat-card.tone-soft-gold {
+		background: var(--swr-gold-soft);
+		color: var(--swr-navy);
+	}
+
+	.swr-stat-card.tone-soft-gold .swr-stat-val {
+		color: var(--swr-stat-gold-val);
+	}
+
+	.swr-stat-val {
+		font-family: var(--font-display);
+		font-size: clamp(2rem, 3.6vw, 2.85rem);
+		font-weight: 800;
+		line-height: 1.04;
+		letter-spacing: -0.03em;
+		margin-bottom: 4px;
+	}
+
+	.swr-stat-label {
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-tag, 0.75rem);
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		margin-bottom: 6px;
+		opacity: 0.9;
+	}
+
+	.swr-stat-sub {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-body-sm, 0.875rem);
+		font-weight: 400;
+		line-height: 1.45;
+		opacity: 0.85;
+	}
+
+	@media (max-width: 960px) {
+		.swr-split-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 580px) {
+		.swr-split-section {
+			padding-bottom: 32px;
+		}
+
+		.swr-services-panel {
+			padding: 20px 16px;
+			border-radius: 26px;
+		}
+
+		.swr-services-grid {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+
+		.swr-numbers-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 10px;
+		}
+
+		.swr-stat-card {
+			padding: 15px 13px;
+		}
+
+		.swr-stat-val {
+			font-size: clamp(1.45rem, 6vw, 1.9rem);
+		}
+
+		.swr-stat-sub {
+			font-size: 11px;
+		}
+	}
+
+	@media (max-width: 340px) {
+		.swr-numbers-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

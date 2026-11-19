@@ -1,0 +1,550 @@
+﻿---
+import { MODULES_SHOWCASE } from '../data/swrLanding';
+---
+
+<section id="modul" class="swr-modules-section">
+	<div class="swr-container">
+		<div class="swr-modules-shell">
+			<div class="swr-modules-head">
+				<h2 class="swr-modules-title">{MODULES_SHOWCASE.heading}</h2>
+				<button type="button" class="swr-btn swr-btn-outline-light" data-open-download="true">
+					<span>{MODULES_SHOWCASE.ctaLabel}</span>
+					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</button>
+			</div>
+
+			<div class="swr-modules-grid">
+				{
+					MODULES_SHOWCASE.items.map((mod) => (
+						<article class="swr-module-card" data-tone={mod.accentTone}>
+							<div class="swr-module-meta">
+								<span class="swr-module-cat">{mod.category}</span>
+								<h3 class="swr-module-name">{mod.title}</h3>
+								<p class="swr-module-sub">{mod.subtitle}</p>
+							</div>
+
+							<div class="swr-module-stage">
+								<div class={`swr-module-orb tone-${mod.accentTone}`} aria-hidden="true"></div>
+
+								{mod.id === 'android-deck' && (
+									<div class="swr-mini-screen">
+										<div class="swr-mini-pill-row">
+											<span class="swr-mini-pill">WA Diam</span>
+											<span class="swr-mini-pill warn">Terkunci</span>
+										</div>
+										<div class="swr-mini-now">Kirab Pengantin</div>
+										<div class="swr-mini-fade-card" aria-hidden="true">
+											<div class="swr-mini-fade-top">
+												<span>Fade Out Halus</span>
+												<span class="swr-tabular">3s / 5s</span>
+											</div>
+											<svg class="swr-mini-fade-svg" viewBox="0 0 140 34" fill="none">
+												<defs>
+													<linearGradient id="swrFadeFill" x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
+														<stop offset="0%" stop-color="#8CE3C7" stop-opacity="0.35" />
+														<stop offset="100%" stop-color="#8CE3C7" stop-opacity="0.02" />
+													</linearGradient>
+												</defs>
+												<path d="M4 8H38C66 8 84 28 134 30H4Z" fill="url(#swrFadeFill)" />
+												<path d="M4 8H38C66 8 84 28 134 30" stroke="#8CE3C7" stroke-width="2.4" stroke-linecap="round" />
+												<circle cx="38" cy="8" r="3" fill="#F5C451" />
+											</svg>
+											<div class="swr-mini-fade-sub">Tekan 2x = Langsung Putus</div>
+										</div>
+										<div class="swr-mini-fader">
+											<span>16 Pad Efek</span>
+											<span>Kecilkan MC</span>
+										</div>
+									</div>
+								)}
+
+								{mod.id === 'android-stage' && (
+									<div class="swr-mini-screen rta">
+										<div class="swr-mini-rental">SWARARIA SOUND</div>
+										<div class="swr-mini-halo">
+											<div class="swr-mini-halo-inner">
+												<svg viewBox="0 0 36 24" fill="none" class="swr-phase-svg" aria-hidden="true">
+													<path d="M2 14H9L14 4L19 20L24 14H34" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+												</svg>
+												<span>+ / - FASA</span>
+											</div>
+										</div>
+										<div class="swr-mini-fader full">
+											<span>Cek 1 / 2 HP</span>
+											<span>Server Wi-Fi</span>
+										</div>
+									</div>
+								)}
+
+								{mod.id === 'win-audiolab' && (
+									<div class="swr-mini-screen">
+										<div class="swr-win-bar">
+											<span class="swr-win-dots" aria-hidden="true">&bull;&bull;&bull;</span>
+											<span>WINDOWS .EXE</span>
+										</div>
+										<div class="swr-mini-pl active">
+											<span>
+												<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+													<polyline points="20 6 9 17 4 12" />
+												</svg>
+												Suara Jernih
+											</span>
+											<svg viewBox="0 0 36 14" fill="none" class="swr-spec-svg" aria-hidden="true">
+												<path d="M1 12H10C18 12 22 4 35 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+											</svg>
+										</div>
+										<div class="swr-mini-pl warn">
+											<span>
+												<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+													<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+													<line x1="12" y1="9" x2="12" y2="13" />
+													<line x1="12" y1="17" x2="12.01" y2="17" />
+												</svg>
+												MP3 Palsu
+											</span>
+											<svg viewBox="0 0 36 14" fill="none" class="swr-spec-svg" aria-hidden="true">
+												<path d="M1 4H18V12H35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</div>
+										<div class="swr-mini-fader">
+											<span>Volume Rata</span>
+											<span>Potong WAV</span>
+										</div>
+									</div>
+								)}
+
+								{mod.id === 'win-player' && (
+									<div class="swr-mini-screen">
+										<div class="swr-win-bar">
+											<span class="swr-win-dots" aria-hidden="true">&bull;&bull;&bull;</span>
+											<span>LAPTOP &harr; HP</span>
+										</div>
+										<div class="swr-remote-link-box" aria-hidden="true">
+											<svg viewBox="0 0 156 44" fill="none" class="swr-remote-svg">
+												<!-- Mini Laptop -->
+												<rect x="6" y="7" width="38" height="24" rx="3" stroke="#7DD3FC" stroke-width="2" />
+												<path d="M2 34H48" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" />
+												<!-- Link Dots + Mini QR -->
+												<path d="M52 20H64M92 20H104" stroke="#8CE3C7" stroke-width="2" stroke-dasharray="2 3" stroke-linecap="round" />
+												<rect x="67" y="9" width="22" height="22" rx="4" fill="#132B21" stroke="#285944" />
+												<path d="M72 14H76V18H72V14ZM80 14H84V18H80V14ZM72 22H76V26H72V22ZM80 22H84V26H80V22Z" fill="#8CE3C7" />
+												<!-- Mini Phone -->
+												<rect x="114" y="5" width="24" height="34" rx="4" stroke="#8CE3C7" stroke-width="2" />
+												<line x1="122" y1="34" x2="130" y2="34" stroke="#8CE3C7" stroke-width="2" stroke-linecap="round" />
+											</svg>
+										</div>
+										<div class="swr-mini-phase">SCAN QR &bull; PLAY &amp; FADE</div>
+										<div class="swr-mini-fader">
+											<span>8 Pad (1-8)</span>
+											<span>EQ 3-Band</span>
+										</div>
+									</div>
+								)}
+
+								<button
+									type="button"
+									class="swr-module-arrow"
+									aria-label={`Lihat detail modul ${mod.title}`}
+									data-open-module={mod.id}
+								>
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<line x1="7" y1="17" x2="17" y2="7"></line>
+										<polyline points="7 7 17 7 17 17"></polyline>
+									</svg>
+								</button>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.swr-modules-section {
+		padding-top: 0;
+		padding-bottom: var(--swr-section-gap);
+	}
+
+	.swr-modules-shell {
+		position: relative;
+		background: linear-gradient(145deg, var(--swr-shell-navy) 0%, var(--swr-shell-navy-deep) 100%);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-xl);
+		padding: 34px 30px;
+		box-shadow: 0 24px 52px rgba(4, 21, 48, 0.24);
+	}
+
+	.swr-modules-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-bottom: 24px;
+	}
+
+	.swr-modules-title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--swr-text-h2, clamp(1.75rem, 3.2vw, 2.25rem));
+		font-weight: 800;
+		letter-spacing: -0.015em;
+		color: #ffffff;
+	}
+
+	.swr-modules-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 18px;
+	}
+
+	.swr-module-card {
+		background: var(--swr-surface);
+		border: 1px solid var(--swr-border);
+		border-radius: var(--swr-radius-lg);
+		padding: 20px 18px 18px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 310px;
+		transition: transform 200ms ease, box-shadow 200ms ease;
+	}
+
+	.swr-module-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 18px 34px rgba(0, 0, 0, 0.25);
+	}
+
+	.swr-module-cat {
+		display: block;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-tag, 0.75rem);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--swr-accent-text);
+		margin-bottom: 5px;
+	}
+
+	.swr-module-name {
+		margin: 0 0 4px;
+		font-family: var(--font-display);
+		font-size: var(--swr-text-h3, clamp(1.2rem, 2vw, 1.35rem));
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--swr-navy);
+	}
+
+	.swr-module-sub {
+		margin: 0 0 16px;
+		font-family: var(--font-sans);
+		font-size: var(--swr-text-body-sm, 0.875rem);
+		font-weight: 400;
+		line-height: 1.55;
+		color: var(--swr-ink-muted);
+	}
+
+	.swr-module-stage {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 10px;
+		padding-bottom: 6px;
+		min-height: 175px;
+	}
+
+	.swr-module-orb {
+		position: absolute;
+		width: 146px;
+		height: 146px;
+		border-radius: 50%;
+	}
+
+	.swr-module-orb.tone-mint {
+		background: var(--swr-mint-soft);
+	}
+
+	.swr-module-orb.tone-cyan {
+		background: var(--swr-cyan-soft);
+	}
+
+	.swr-module-orb.tone-gold {
+		background: var(--swr-gold-soft);
+	}
+
+	.swr-module-orb.tone-navy {
+		background: var(--swr-navy-orb);
+	}
+
+	.swr-mini-screen {
+		position: relative;
+		z-index: 2;
+		width: 186px;
+		background: var(--swr-console-bg);
+		border: 1.5px solid var(--swr-console-border);
+		border-radius: 16px;
+		padding: 11px;
+		color: var(--swr-console-text);
+		box-shadow: 0 12px 24px rgba(6, 34, 75, 0.22);
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.swr-mini-search {
+		background: var(--swr-console-card);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 8px;
+		padding: 5px 7px;
+		font-size: 10px;
+		color: var(--swr-console-muted);
+	}
+
+	.swr-mini-pl {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 10px;
+		font-weight: 600;
+		background: var(--swr-console-card);
+		border-radius: 7px;
+		padding: 6px 8px;
+		color: var(--swr-console-text);
+	}
+
+	.swr-mini-pl.active {
+		background: #132b21;
+		border: 1px solid #285944;
+		color: var(--swr-console-safe);
+	}
+
+	.swr-mini-pl.warn {
+		background: #351b1b;
+		border: 1px solid #843b38;
+		color: var(--swr-console-alert);
+	}
+
+	.swr-win-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 8px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		color: var(--swr-console-bt);
+		border-bottom: 1px solid var(--swr-console-border);
+		padding-bottom: 4px;
+	}
+
+	.swr-win-dots {
+		letter-spacing: 2px;
+		color: var(--swr-console-muted);
+	}
+
+	.swr-mini-pill-row {
+		display: flex;
+		gap: 4px;
+	}
+
+	.swr-mini-pill {
+		background: #132b21;
+		color: var(--swr-console-safe);
+		font-size: 8.5px;
+		font-weight: 800;
+		padding: 2px 6px;
+		border-radius: 999px;
+	}
+
+	.swr-mini-pill.warn {
+		background: #2e2311;
+		color: var(--swr-console-warn);
+	}
+
+	.swr-mini-now {
+		font-size: 10.5px;
+		font-weight: 700;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.swr-mini-fade-card {
+		background: var(--swr-console-card);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 9px;
+		padding: 6px 7px;
+	}
+
+	.swr-mini-fade-top {
+		display: flex;
+		justify-content: space-between;
+		font-size: 8.5px;
+		font-weight: 800;
+		color: var(--swr-console-safe);
+		margin-bottom: 2px;
+	}
+
+	.swr-mini-fade-svg {
+		width: 100%;
+		height: 28px;
+		display: block;
+	}
+
+	.swr-mini-fade-sub {
+		font-size: 8px;
+		font-weight: 700;
+		color: var(--swr-console-warn);
+		text-align: center;
+	}
+
+	.swr-mini-fader {
+		display: flex;
+		justify-content: space-between;
+		font-size: 8.5px;
+		color: var(--swr-console-muted);
+		border-top: 1px solid var(--swr-console-border);
+		padding-top: 5px;
+	}
+
+	.swr-mini-fader.full {
+		width: 100%;
+	}
+
+	.swr-mini-screen.rta {
+		align-items: center;
+		text-align: center;
+	}
+
+	.swr-mini-rental {
+		font-size: 8.5px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		color: var(--swr-gold);
+	}
+
+	.swr-mini-halo {
+		width: 72px;
+		height: 72px;
+		border-radius: 50%;
+		border: 3px dashed var(--swr-gold);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: radial-gradient(circle, rgba(244, 206, 106, 0.16), transparent 70%);
+	}
+
+	.swr-mini-halo-inner {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		background: var(--swr-console-card);
+		border: 1.5px solid var(--swr-gold);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 8px;
+		font-weight: 800;
+		color: var(--swr-gold);
+		gap: 2px;
+	}
+
+	.swr-phase-svg {
+		width: 24px;
+		height: 16px;
+		color: var(--swr-console-safe);
+	}
+
+	.swr-spec-svg {
+		width: 34px;
+		height: 14px;
+		flex-shrink: 0;
+	}
+
+	.swr-remote-link-box {
+		background: var(--swr-console-deep);
+		border: 1px solid var(--swr-console-border);
+		border-radius: 8px;
+		padding: 4px;
+	}
+
+	.swr-remote-svg {
+		width: 100%;
+		height: 36px;
+		display: block;
+	}
+
+	.swr-module-arrow {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		z-index: 3;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1.5px solid var(--swr-border-strong);
+		background: var(--swr-surface);
+		color: var(--swr-navy);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: 0 6px 14px rgba(6, 34, 75, 0.16);
+		transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+	}
+
+	.swr-module-arrow:hover {
+		background: var(--swr-cyan);
+		border-color: var(--swr-cyan);
+		color: #ffffff;
+		transform: scale(1.06);
+	}
+
+	@media (max-width: 1040px) {
+		.swr-modules-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.swr-modules-section {
+			padding-bottom: 32px;
+		}
+
+		.swr-modules-shell {
+			padding: 22px 16px;
+			border-radius: 26px;
+		}
+
+		.swr-modules-grid {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+
+		.swr-module-card {
+			min-height: auto;
+			padding: 18px 16px;
+		}
+
+		.swr-mini-screen {
+			width: min(100%, 220px);
+		}
+
+		.swr-module-arrow {
+			width: 42px;
+			height: 42px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.swr-modules-head .swr-btn {
+			width: 100%;
+		}
+	}
+</style>
