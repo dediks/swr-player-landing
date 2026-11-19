@@ -83,9 +83,9 @@ export interface PlatformDownloadCard {
 }
 
 export const SITE_META = {
-	title: 'SWR Player — MP3 Player Gratis dari Tukang Sound untuk Tukang Sound',
+	title: 'SWR Player — Audio Player Gratis dari Tukang Sound untuk Tukang Sound',
 	description:
-		'100% Gratis sebagai dedikasi untuk sesama tukang sound. Tersedia Desktop Windows & Android Native: download MP3 kualitas optimal YouTube & YT Music Premium, Fade In/Out adjustable, Remote & sharing Wi-Fi, 31-Band Graphic EQ, Pad Slot, Brand Skin.',
+		'100% Gratis sebagai dedikasi untuk sesama tukang sound. Tersedia Desktop Windows & Android Native: download audio kualitas optimal YouTube & YT Music Premium, Fade In/Out adjustable, Remote & sharing Wi-Fi, 31-Band Graphic EQ, Pad Slot, Brand Skin.',
 	brandName: 'SWR PLAYER',
 	brandSub: 'BY SWARARIA',
 };
@@ -98,9 +98,9 @@ export const NAV_LINKS: NavLinkItem[] = [
 export const HERO_COPY = {
 	eyebrow: '100% GRATIS · DEDIKASI TUKANG SOUND',
 	titleLead: 'SWR Player',
-	titleMain: 'MP3 Player yang Dibuat oleh Tukang Sound untuk Tukang Sound.',
+	titleMain: 'Audio Player yang Dibuat oleh Tukang Sound untuk Tukang Sound.',
 	description:
-		'Tersedia untuk Desktop Windows dan Android Native sebagai karya dedikasi—dibagikan gratis penuh fitur tanpa langganan atau iklan. Download MP3 kualitas optimal dari YouTube & YT Music Premium, Fade In/Out adjustable, 31-Band Graphic EQ, Pad Slot, Brand Skin, hingga remote & sharing track Wi-Fi.',
+		'Tersedia untuk Desktop Windows dan Android Native sebagai karya dedikasi—dibagikan gratis penuh fitur tanpa langganan atau iklan. Download audio kualitas optimal dari YouTube & YT Music Premium, Fade In/Out adjustable, 31-Band Graphic EQ, Pad Slot, Brand Skin, hingga remote & sharing track Wi-Fi.',
 	primaryCta: 'Download Gratis',
 	secondaryCta: 'Lihat Alur Kerja',
 };
@@ -152,7 +152,7 @@ export const STORY_SECTION = {
 			step: '01',
 			shortLabel: 'Cari & Unduh',
 			phase: 'TAHAP 01 · PERSIAPAN MATERI',
-			title: 'Cari Lagu & Download MP3 Langsung dari Aplikasi',
+			title: 'Cari Lagu & Download Audio Langsung dari Aplikasi',
 			problem: 'Masalah di lapangan: menyalin tautan lewat situs konverter sering penuh iklan dan kualitas audionya turun.',
 			solution:
 				'Keputusan desain: kolom pencarian YouTube & YouTube Music ditanam langsung di halaman awal. Tinggal cari judul lalu unduh dengan kualitas optimal—terlebih saat terhubung akun YouTube Music Premium.',
@@ -362,7 +362,7 @@ export const FEATURES_SECTION = {
 		{
 			id: 'yt-download',
 			icon: 'download',
-			title: 'Download MP3 Langsung dari Aplikasi',
+			title: 'Download Audio Langsung dari Aplikasi',
 			description:
 				'Cari lagu atau playlist lalu unduh langsung dari dalam aplikasi dengan kualitas paling optimal dari YouTube & YouTube Music — terlebih saat terhubung akun YouTube Music Premium.',
 		},
@@ -440,7 +440,7 @@ export const DOWNLOAD_SECTION = {
 			id: 'windows',
 			badge: 'WINDOWS 10 / 11 (64-BIT)',
 			title: 'Desktop Windows',
-			version: 'Gratis · v1.0.0 · ~160 MB',
+			version: 'Gratis · v1.0.0 · ~128 MB',
 			description:
 				'Paket lengkap untuk laptop operator: download YouTube & YT Music Premium, FOH Live Player, 8 Pad Hotkey, Fade In/Out, Tag Organizer, dan pemotong multitrack/video.',
 			primary: {
