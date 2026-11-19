@@ -82,7 +82,7 @@ const isSafeHttpsUrl = (value: string) => value.trim().startsWith('https://');
 							<div class="swr-dl-actions">
 								{
 									primaryReady ? (
-										<a href={card.primary.url} class="swr-btn swr-btn-primary swr-dl-btn" download>
+										<a href={card.primary.url} class="swr-btn swr-btn-primary swr-dl-btn" rel="noopener noreferrer" download>
 											<span>{card.primary.label}</span>
 											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 												<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -110,7 +110,7 @@ const isSafeHttpsUrl = (value: string) => value.trim().startsWith('https://');
 								{
 									card.secondary &&
 										(secondaryReady ? (
-											<a href={card.secondary.url} class="swr-btn swr-btn-outline swr-dl-btn" download>
+											<a href={card.secondary.url} class="swr-btn swr-btn-outline swr-dl-btn" rel="noopener noreferrer" download>
 												<span>{card.secondary.label}</span>
 											</a>
 										) : (

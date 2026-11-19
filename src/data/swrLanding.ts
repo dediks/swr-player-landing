@@ -457,18 +457,18 @@ export const DOWNLOAD_SECTION = {
 			id: 'android',
 			badge: 'ANDROID 8.0+ NATIVE',
 			title: 'Android Native',
-			version: 'Gratis · v0.6.0 · Mulai ~59 MB',
+			version: 'Gratis · v0.6.0 · Mulai ~56 MB',
 			description:
 				'Pemutar panggung ringan dan responsif di HP: 31-Band Graphic EQ, Pad Slot, Brand Skin, download YT/YTM Premium, Safe Mode anti-notif WA, Stage RTA & Wi-Fi Server.',
 			primary: {
-				label: 'APK Gratis Ringan arm64-v8a (~59 MB)',
-				fileName: 'SWR-Player-arm64-v8a.apk',
-				url: '',
+				label: 'APK Gratis Ringan arm64-v8a (~56 MB)',
+				fileName: 'SWR-Player-0.6.0-arm64-v8a-release.apk',
+				url: 'https://github.com/dediks/swararia-audio-player-android/releases/download/v0.6.0/SWR-Player-0.6.0-arm64-v8a-release.apk',
 			},
 			secondary: {
-				label: 'APK Gratis Universal (~101 MB)',
-				fileName: 'SWR-Player-universal.apk',
-				url: '',
+				label: 'APK Gratis Universal (~194 MB)',
+				fileName: 'SWR-Player-0.6.0-universal-release.apk',
+				url: 'https://github.com/dediks/swararia-audio-player-android/releases/download/v0.6.0/SWR-Player-0.6.0-universal-release.apk',
 			},
 			specs: [
 				'Seluruh varian memiliki fitur yang sama persis; perbedaannya hanya pada dukungan arsitektur CPU di dalam APK.',
@@ -477,14 +477,14 @@ export const DOWNLOAD_SECTION = {
 			sizeGuideTitle: 'Penjelasan Ukuran File Besar & Kecil',
 			sizeGuide: [
 				{
-					label: 'Ukuran Kecil (~59 MB · Khusus 1 Arsitektur)',
+					label: 'Ukuran Kecil (~56 MB · Khusus arm64-v8a)',
 					detail:
-						'Varian arm64-v8a hanya menyertakan library FFmpeg, Python & yt-dlp untuk mayoritas HP Android modern 64-bit (tersedia juga versi khusus HP 32-bit lama armeabi-v7a) sehingga jauh lebih hemat kuota.',
+						'Varian arm64-v8a hanya menyertakan library FFmpeg, Python & yt-dlp untuk mayoritas HP Android modern 64-bit sehingga jauh lebih ringan dan hemat kuota.',
 				},
 				{
-					label: 'Ukuran Besar (~101 MB – ~198 MB · Universal)',
+					label: 'Ukuran Besar (~194 MB · Universal Semua Arsitektur)',
 					detail:
-						'Varian Universal membundel 2 arsitektur HP sekaligus (arm64-v8a + armeabi-v7a, ~101 MB) atau lengkap 4 arsitektur termasuk emulator PC (x86/x86_64, ~198 MB). Pilih ini jika tidak yakin tipe prosesor HP atau ingin 1 file untuk semua perangkat.',
+						'Varian Universal membundel lengkap 4 arsitektur CPU sekaligus (arm64-v8a, armeabi-v7a untuk HP 32-bit lama, serta x86/x86_64). Pilih ini hanya jika memakai HP 32-bit lama atau emulator.',
 				},
 			],
 		},
